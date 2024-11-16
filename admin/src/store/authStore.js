@@ -8,7 +8,10 @@ const API_ITEMS_URL = import.meta.env.MODE === "development" ? "http://localhost
 
 const API_USERS_URL = import.meta.env.MODE === "development" ? "http://localhost:4000/api/user" : "/api/user";
 
-const API_RABATS_URL = import.meta.env.MODE === "development" ? "http://localhost:4000/api/rabat" : "/api/rabat";
+const API_RABAT_URL = import.meta.env.MODE === "development" ? "http://localhost:4000/api/rabat" : "/api/rabat";
+
+const API_ORDER_URL = import.meta.env.MODE === "development" ? "http://localhost:4000/api/order" : "/api/order";
+
 
 axios.defaults.withCredentials = true;
 
@@ -164,7 +167,7 @@ export const useAuthStore = create((set) => ({
 
 	setRabat: async (rabatValue, emailArr, token) => {	
 		try {
-			const response = await axios.post(`${API_RABATS_URL}/set`,	{ rabatValue: rabatValue, emailArr:emailArr  }, { headers: { token: token } });
+			const response = await axios.post(`${API_RABAT_URL}/set`,	{ rabatValue: rabatValue, emailArr:emailArr  }, { headers: { token: token } });
 			set({ message: response.data.message, rabatCode: response.data.rabatCode });
 			return response
 		} catch (error) {
@@ -175,8 +178,47 @@ export const useAuthStore = create((set) => ({
 		}
 	},
 
+	addItemToCart: async (itemId,userId) => {
+		try {
 
-	//API_RABATS_URL
+			let activity = itemId?'update':'add';
+			const response = await axios.post(`http://localhost:4000/api/cart/add`,{itemId,userId});
+			//const response = await axios.post(`${url}${newUrl}`, formData);
+			set({ message: response.data.message });
+			return response
+		} catch (error) {
+			set({
+				error: error.response
+			});
+			throw error;
+		}
+	},
+	verifyRabatCode: async (rabatCode,email,token) => {
+		set({ isLoading: true, error: null });
+		try {
+			const response = await axios.post(`${API_RABAT_URL}${pagesLinks.verifyRabat}`, { rabatCode: rabatCode, email:email  }, { headers: { token: token } });
+			set({ rabatValue: response.data.rabatValue, isLoading: false });
+			return response.data;
+		} catch (error) {
+			set({ error: error.response.data.message || customErrors.verifyRabat, isLoading: false });
+			throw error;
+		}
+	},
+	verifyOrderCode: async (verificationCode,_id) => {
+		set({ isLoading: true, error: null });
+		try {
+			const response = await axios.post(`${API_ORDER_URL}${pagesLinks.verifyOrder}/${_id}`, { verificationCode: verificationCode, _id: _id  });
+			console.log(response);
+			
+			set({ rabatValue: response.data.rabatValue, isLoading: false, verified:true  });
+			return response.data;
+		} catch (error) {
+			set({ error: error.response.data.message || customErrors.verifyOrder, isLoading: false });
+			throw error;
+		}
+	},
+
+
 
 
 

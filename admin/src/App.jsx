@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 
 import SignUpPage from './pages/LoginPages/SignUpPage';
 import LoginPage from './pages/LoginPages/LoginPage.jsx';
@@ -12,16 +12,33 @@ import LoadSpinner from './components/LoadSpinner/LoadSpinner.jsx';
 
 import { Toaster } from 'react-hot-toast';
 import { useAuthStore } from './store/authStore';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import ListPage from './pages/AuthPages/ListPage';
 import AddPage from './pages/AuthPages/AddPage.jsx';
-import OrdersPage from './pages/AuthPages/OrdersPage.jsx';
+import OrdersPage from './pages/AuthPages/OrdersPage.jsx'
 import BackgroundAnimation from './components/BackgroundAnimation/BackgroundAnimation.jsx';
 import AdminNavbar from './components/AdminNavbar/AdminNavbar.jsx'
+import Navbar from './components/Navbar/Navbar.jsx'
 
-import { pagesLinks, authList } from './utils/variables.jsx';
+import { pagesLinks, authList, panelPath } from './utils/variables.jsx';
 import { replacePolishLetters } from './utils/functions.js'
 import NotAdminPage from './pages/NotAdminPage.jsx';
+
+
+
+//
+
+
+import Home from './pages/Home/Home';
+import Cart from './pages/Cart/Cart';
+import PlaceOrder from './pages/PlaceOrder/PlaceOrder';
+import Footer from './components/Footer/Footer';
+/* import LoginPopup from './components/LoginPopup/LoginPopup'; */
+/* import { pagesLinks, footerLinks } from './utils/variables'; */
+import PopupPage from './components/PopupPage/PopupPage';
+import Verify from './pages/Verify/Verify';
+import MyOrders from './pages/MyOrders/MyOrders';
+import VerifyOrder from './pages/VerifyOrder/VerifyOrder.jsx';
 
 // protect routes that require authentication
 const ProtectedRoute = ({ children }) => {
@@ -59,6 +76,7 @@ const ProtectedRoute = ({ children }) => {
 };
 
 
+
 // redirect authenticated users to the home page
 const RedirectAuthenticatedUser = ({ children }) => {
 	const { isAuthenticated, user } = useAuthStore();
@@ -71,30 +89,59 @@ const RedirectAuthenticatedUser = ({ children }) => {
 };
 
 function App() {
-	const { isCheckingAuth, checkAuth } = useAuthStore();
-	
 
+	
+	const { isCheckingAuth, checkAuth, isAuthenticated } = useAuthStore();
+	//const [showLogin, setShowLogin] = useState(false);
+	const [showPopupPage, setShowPopupPage] = useState(false);
+	
 	useEffect(() => {
 		checkAuth();
-		console.log(checkAuth())
-		if(checkAuth()){
-			console.log('lel')
-		}else{
-			console.log('xd');
-			
-		}
-		console.log('sprawdzam')
 	}, [checkAuth]);
 
+
+	/* scroll to # */
+
+const location = useLocation();
+  
+useEffect(() => {
+  scrollToHash();
+  // Other location checking and authority enforcing functions here
+}, [location]);
+
+/**
+ * Check for a hash link in the React Router location and search children for a matching id
+ */
+const scrollToHash = () => {
+  if (location.hash) {
+	let hash = location.hash.replace('#', '');
+	const element = document.getElementById(hash);
+	element?.scrollIntoView({
+	  behavior: 'smooth'
+	});
+  }
+}
+
 	if (isCheckingAuth) return <LoadSpinner />;
-	//if (isCheckingAuth) return <AdminNavbar />;
+
+
+
+
 
 	return (
-		<div className='background'>
+		<div className='background flexCol'>
 		{/* 	<BackgroundAnimation count={30} /> */}
-	{/* 	<AdminNavbar /> */}
+		{showPopupPage && <PopupPage setShowPopupPage={setShowPopupPage} showPopupPage={showPopupPage}/>}
+		<Navbar />
 			<Routes>
-		
+
+			<Route path='/' element={<Home />} />
+          <Route path={`/${pagesLinks.cart}`} element={<Cart />} />
+          <Route path={`/${pagesLinks.order}`} element={<PlaceOrder />} />
+          <Route path={`/${pagesLinks.verify}`} element={<Verify />} />
+          <Route path={`/${pagesLinks.myorders}`} element={<MyOrders />} />
+		{/*   <Route path={`/${pagesLinks.verifyOrder}/:_id`} element={<VerifyOrder />} /> */}
+
 				<Route
 					path='/'
 					element={
@@ -125,7 +172,7 @@ function App() {
 						/>
 					))} */}
 				<Route
-					path={replacePolishLetters(authList.add)}
+					path={panelPath+authList.add}
 					element={
 						<ProtectedRoute>
 							<AddPage />
@@ -134,7 +181,7 @@ function App() {
 				/>
 
 			<Route
-					path={replacePolishLetters(authList.list)}
+					path={panelPath+authList.list}
 					element={
 						<ProtectedRoute>
 							<ListPage />
@@ -143,7 +190,7 @@ function App() {
 				/>
 
 			<Route
-					path={replacePolishLetters(authList.orders)}
+					path={replacePolishLetters(panelPath+authList.orders)}
 					element={
 						<ProtectedRoute>
 							<OrdersPage />
@@ -161,7 +208,7 @@ function App() {
 
 
 				<Route
-					path={pagesLinks.signup}
+					path={panelPath+pagesLinks.signup}
 					element={
 						<RedirectAuthenticatedUser>
 							<SignUpPage />
@@ -169,7 +216,7 @@ function App() {
 					}
 				/>
 				<Route
-					path={pagesLinks.login}
+					path={panelPath+pagesLinks.login}
 					element={
 						<RedirectAuthenticatedUser>
 							<LoginPage />
@@ -177,11 +224,11 @@ function App() {
 					}
 				/>
 				<Route
-					path={pagesLinks.verifyEmail}
+					path={panelPath+pagesLinks.verifyEmail}
 					element={<EmailVerificationPage />}
 				/>
 				<Route
-					path={pagesLinks.forgotPass}
+					path={panelPath+pagesLinks.forgotPass}
 					element={
 						<RedirectAuthenticatedUser>
 							<ForgotPasswordPage />
@@ -190,7 +237,7 @@ function App() {
 				/>
 
 				<Route
-					path={`${pagesLinks.resetPass}/:token`}
+					path={`${panelPath+pagesLinks.resetPass}/:token`}
 					element={
 						<RedirectAuthenticatedUser>
 							<ResetPasswordPage />
@@ -200,6 +247,7 @@ function App() {
 				{/* catch all routes */}
 				<Route path='*' element={<Navigate to='/' replace />} />
 			</Routes>
+			<Footer setShowPopupPage={setShowPopupPage}/>
 			<Toaster />
 		</div>
 	);

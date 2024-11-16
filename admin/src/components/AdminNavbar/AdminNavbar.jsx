@@ -1,9 +1,8 @@
 import React, { useContext, useState } from 'react';
 import './AdminNavbar.css';
 import { assets } from '../../assets/assets.js';
-import { brandData, formData, authList } from '../../utils/variables.jsx';
+import { brandData, formData, authList, panelPath } from '../../utils/variables.jsx';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-
 import { useAuthStore } from '../../store/authStore';
 import { replacePolishLetters } from '../../utils/functions.js';
 import BurgerMenu from '../BurgerMenu/BurgerMenu.jsx';
@@ -27,7 +26,7 @@ const AdminNavbar = () => {
 			<Link to='/'>
 				<img
 					src={assets.logo}
-					alt={`logo ${brandData.name}`}
+					alt={`logo ${brandData?.name}`}
 					className='logo'
 				/>
 			</Link>
@@ -35,7 +34,7 @@ const AdminNavbar = () => {
 				<ul className={`navbarMenu ${activeClass}`}>
 					{Object.entries(authList).map(([item, i]) => (
 						<a
-							href={`${replacePolishLetters(authList[item])}`}
+							href={`${panelPath}${replacePolishLetters(authList[item])}`}
 							key={i}
 							className={
 								location.pathname === replacePolishLetters(authList[item])
@@ -50,7 +49,7 @@ const AdminNavbar = () => {
 					<div className='navLogout'>
 						<img
 							src={assets.logo}
-							alt={`logo ${brandData.name}`}
+							alt={`logo ${brandData?.name}`}
 							className='logoMenu'
 						/>
 						<img
@@ -71,7 +70,7 @@ const AdminNavbar = () => {
 				>
 					<div className='navProfile'>
 						<img src={assets.profile_image} alt='' className='profile' />
-						<p>{user.name}</p>
+						<p>{user?.name}</p>
 					</div>
 					<a className={`logOutImg ${isHovered ? 'hoverImg' : ''}`}>
 						<img

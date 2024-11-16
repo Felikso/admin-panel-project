@@ -6,11 +6,12 @@
 }
 
 .btnHover {
+    justify-self: center;
     width: 200px;
     font-weight: 600;
 /*     font-size: calc(12px + .5vw); */
     font-size: clamp(.5rem, .4rem + 2cqi, .75rem);
-    color: var(--second-fc);
+    color: var(--second-fc-light);
     text-transform: uppercase;
     cursor: pointer;
     margin: 20px;
@@ -24,6 +25,15 @@
     -o-transition: all .4s ease-in-out;
     -webkit-transition: all .4s ease-in-out;
     transition: all .4s ease-in-out;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.btnHover img{
+    max-height: 50%;
 }
 
 .btnHover:hover {
@@ -100,5 +110,12 @@
       color: var(--main-fc);
     }
   }
+
+  @keyframes rotate {
+    0%,80% {
+      transform: rotate(360deg) ;
+    }
+  }
+
 
 

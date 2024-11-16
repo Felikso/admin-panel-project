@@ -1,21 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Itim&family=Outfit:wght@100..900&display=swap');
 
 :root {
-  --body-color: #ffffff;
+  --body-color: #fcfcfc;
   --main-color: rgb(0, 0, 0);
   --l: 50%;
 
   --main-fc: #1b1b1b;
-  --main-bg: rgb(175 157 98 / 69%);
+  --main-bg: rgba(222, 222, 222, 0.69);
 
-  --second-fc: rgb(88, 71, 14);
+  --second-fc: rgb(194, 164, 68);
   --second-bg: var(--main-fc);
 
   --main-content-bg: rgb(175 157 98 / 69%);
-  --seond-content-bg: rgb(137, 114, 37);
+  --seond-content-bg: rgb(161, 142, 77);
 
   --second-bg-light: rgba(252, 218, 109, 0.685);
   --second-fc-light: #ffffff;
+
+  --dark-bg: #252525;
+  --third-fc-light: #ff3a3a;
 
 
 
@@ -24,11 +27,12 @@
   --color-primary-lighter: hsl(var(--main-fc),calc(var(--l) + 10%));
   --color-primary-lightest: hsl(var(--main-fc),calc(var(--l) + 30%)); */
 
-  --third-color: rgb(240, 200, 107);
+  --third-color: rgb(83, 64, 25);
   --fourth-color: #101010;
 
-  --main-gradient: radial-gradient(circle, rgba(255,78,0,1) 0%, rgba(122,35,5,1) 60%, rgba(102,0,0,1) 100%);
-  --background-griadent: rgb(211, 180, 79);
+/*   --main-gradient: radial-gradient(circle, rgba(255,78,0,1) 0%, rgba(122,35,5,1) 60%, rgba(102,0,0,1) 100%); */
+--main-gradient: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgb(148, 118, 37) 50%, rgb(0, 0, 0) 100%);
+  --background-griadent: rgb(228, 198, 99);
 
   --animation-link-color: rgb(100, 100, 100);
   --animation-link-color-hover: var(--second-fc);
@@ -46,11 +50,15 @@
   --nav-color: var(--second-fc);
   --nav-bg: var(--body-color);
 
+  --footer-color: var(--second-fc);
+  --footer-bg: var(--body-color);
+
   --red-icon-bg: rgb(187, 60, 60);
   --light-icon-bg: rgb(210, 210, 210); 
 
   --table-bg: hsla(0, 0%, 100%, 0.5);
   --table-second-bg: rgba(190, 190, 190, 0.5);
+
 }
 
 *{
@@ -61,6 +69,10 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+}
+
+html, body { 
+  scroll-behavior: smooth
 }
 
 body{
@@ -90,6 +102,12 @@ hr{
   display: flex;
   flex-direction: column;
   gap: 10px;
+  justify-content: center;
+}
+
+.flexRow{
+  display: flex;
+  gap: 10px;
 }
 
 .cursor{
@@ -103,10 +121,26 @@ position: relative;
 justify-content: center; 
 align-items: center; 
 min-height: 100vh; 
+margin: 0 !important;
 
 /* background-image: linear-gradient(to bottom right); 
 background-color: #111827; 
 background-color: #064E3B;  */
+}
+
+.animatedIcons img{
+  width: 30px;
+
+  cursor: pointer;
+  transition: .5s;
+}
+
+.animatedIcons {
+  filter: invert(70%) sepia(55%) saturate(697%) hue-rotate(334deg) brightness(109%) contrast(92%);
+  transition: filter 0.5s;
+}
+.animatedIcons img:hover {
+  filter: invert(70%) sepia(55%) saturate(697%) hue-rotate(334deg) brightness(109%) contrast(92%) hue-rotate(30deg);
 }
 
 .cardContent{
@@ -117,7 +151,7 @@ background-color: #064E3B;  */
     border-color: #2c84ff; 
     width: 100%; 
     max-width: 28rem; 
-    background-color: var(--main-bg);
+    background-color: var(--body-color);
     --bg-opacity: 0.8; 
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); 
     transition: .3s;
@@ -160,7 +194,7 @@ justify-content: center;
 .infoText{
     font-size: 0.875rem;
 line-height: 1.25rem; 
-color: #9CA3AF; 
+color: var(--second-fc); 
 
 }
 
@@ -251,6 +285,8 @@ color: #9CA3AF;
   }
 
 
+
+
   /*
   https://codepen.io/ianfarb/pen/neEWbP
   for navlinks + background change
@@ -270,15 +306,12 @@ color: #9CA3AF;
   }
 
 
-  input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  display: none;
-}
+  .displayNone{
+    display: none !important;
+  }
 
-
-.disabled{
-  pointer-events: none;
-  border: 1px solid grey;
-  background-color: lightgrey;
+  .disabled{
+    pointer-events: none  !important;
+    border: 1px solid grey  !important;
+    background-color: lightgrey  !important;
 }
-  

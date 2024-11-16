@@ -23,6 +23,8 @@ export const pagesLinks = {
     verifyRabat: 'verify'
 }
 
+export const panelPath = '/panel';
+
 export const authList = {
     list: '/lista',
     add: '/dodaj',

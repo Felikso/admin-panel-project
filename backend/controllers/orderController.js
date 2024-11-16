@@ -12,7 +12,7 @@ import {
 	PASSWORD_RESET_SUCCESS_TEMPLATE,
 	VERIFICATION_EMAIL_TEMPLATE,
 } from "../utils/emailTemplates.js";
-import { generateTokenAndSetCookie } from "../utils/generateTokenAndSetCookie.js";
+//import { generateTokenAndSetCookie } from "../utils/generateTokenAndSetCookie.js";
 
 /* const stripe = Stripe(process.env.STRIPE_SECRET_KEY); */
 
@@ -21,7 +21,7 @@ const placeOrder = async (req,res) => {
 
     const verificationCode = Math.floor(100000 + Math.random() * 900000).toString();
     var anonimId = new mongoose.Types.ObjectId();
-    const anonimCode = 	generateTokenAndSetCookie(res, anonimId);
+    //const anonimCode = 	generateTokenAndSetCookie(res, anonimId);
 
     try {
         let rabatValue = 0;
@@ -36,7 +36,7 @@ const placeOrder = async (req,res) => {
         
         const newOrder = new orderModel({
             userId:orderId,
-            anonimToken: anonimCode,
+            //anonimToken: anonimCode,
             items:req.body.items,
             amount:req.body.amount,
             address:req.body.address,

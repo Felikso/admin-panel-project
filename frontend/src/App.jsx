@@ -18,8 +18,8 @@ import AddPage from './pages/AuthPages/AddPage.jsx';
 import BackgroundAnimation from './components/BackgroundAnimation/BackgroundAnimation.jsx';
 import AdminNavbar from './components/AdminNavbar/AdminNavbar.jsx'
 
-import { pagesLinks, authList } from './utils/variables.jsx';
-/* import { replacePolishLetters } from './utils/functions.js' */
+import { pagesLinks, authList, panelPath } from './utils/variables.jsx';
+import { replacePolishLetters } from './utils/functions.js'
 import NotAdminPage from './pages/NotAdminPage.jsx';
 
 
@@ -171,7 +171,7 @@ const scrollToHash = () => {
 						/>
 					))} */}
 				<Route
-					path={authList.add}
+					path={panelPath+authList.add}
 					element={
 						<ProtectedRoute>
 							<AddPage />
@@ -180,7 +180,7 @@ const scrollToHash = () => {
 				/>
 
 			<Route
-					path={authList.list}
+					path={panelPath+authList.list}
 					element={
 						<ProtectedRoute>
 							<ListPage />
@@ -189,7 +189,7 @@ const scrollToHash = () => {
 				/>
 
 			<Route
-					path={authList.orders}
+					path={panelPath+authList.orders}
 					element={
 						<ProtectedRoute>
 							<ListPage />
@@ -207,7 +207,7 @@ const scrollToHash = () => {
 
 
 				<Route
-					path={pagesLinks.signup}
+					path={panelPath+pagesLinks.signup}
 					element={
 						<RedirectAuthenticatedUser>
 							<SignUpPage />
@@ -215,7 +215,7 @@ const scrollToHash = () => {
 					}
 				/>
 				<Route
-					path={pagesLinks.login}
+					path={panelPath+pagesLinks.login}
 					element={
 						<RedirectAuthenticatedUser>
 							<LoginPage />
@@ -223,11 +223,11 @@ const scrollToHash = () => {
 					}
 				/>
 				<Route
-					path={pagesLinks.verifyEmail}
+					path={panelPath+pagesLinks.verifyEmail}
 					element={<EmailVerificationPage />}
 				/>
 				<Route
-					path={pagesLinks.forgotPass}
+					path={panelPath+pagesLinks.forgotPass}
 					element={
 						<RedirectAuthenticatedUser>
 							<ForgotPasswordPage />
@@ -236,7 +236,7 @@ const scrollToHash = () => {
 				/>
 
 				<Route
-					path={`${pagesLinks.resetPass}/:token`}
+					path={`${panelPath+pagesLinks.resetPass}/:token`}
 					element={
 						<RedirectAuthenticatedUser>
 							<ResetPasswordPage />
