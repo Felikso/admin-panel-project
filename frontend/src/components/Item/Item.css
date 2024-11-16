@@ -1,0 +1,96 @@
+.item{
+    width: 100%;
+    margin: auto;
+    border-radius: 15px;
+    -webkit-box-shadow: -9px 9px 24px 0px rgb(0, 0, 0);
+    -moz-box-shadow: -9px 9px 24px 0px rgb(0, 0, 0);
+    box-shadow: -9px 9px 24px 0px rgb(0, 0, 0);
+    transition: .3s;
+    animation: fadeIn;
+    min-height: 400px;
+    background: var(--body-color);
+}
+
+.item:hover{
+    transform: scale(1.05);
+}
+
+.itemImage{
+    width: 100%;
+    border-radius: 15px 15px 0 0;
+    height: 200px;
+    object-fit: cover; 
+}
+
+.itemInfo{
+    padding: 20px;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.itemNameRating{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.itemNameRating p{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.itemNameRating img{
+    width: 70px;
+}
+
+.itemDesc{
+    color: var(--main-color);
+    font-size: 12px;
+}
+
+.itemPrice{
+    color: var(--fourth-color);
+    font-size: 22px;
+    font-weight: 500;
+    margin: 10px 0;    
+}
+
+.itemImageContainer{
+    position: relative;
+}
+
+.itemImageContainer .add{
+    width: 35px;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.itemCounter{
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px;
+    border-radius: 50px;
+    background-color: var(--second-fc);
+    transition: .5s;
+    cursor: pointer;
+}
+
+.itemAddBg{
+    background-color: var(--main-color);
+}
+
+.itemCounter img{
+    width: 35px;
+}
+
+

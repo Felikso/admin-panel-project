@@ -1,0 +1,73 @@
+/* list page*/
+
+.listTable{
+    width: 100%;
+}
+.listTableCard{
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    border: 1px solid var(--main-color);
+    font-size: 13px;
+   /*  position: relative;
+    height: 72px; */
+}
+
+
+
+
+
+.listTableCard img{
+    width: 70px;
+    height: 70px;
+   /*  background-size: contain;
+    position: absolute; */
+}
+
+.listTableCard.title{
+    display: none;
+}
+
+.listTableCard:first-child {
+    background: var(--main-color);
+    color: var(--body-color);
+    position: fixed;
+    width: 100%;
+
+}
+
+@media (min-width:750px){
+    .listTableCard{
+        grid-template-columns: .5fr 2fr 1fr 1fr .5fr;
+        gap: 15px;
+    }
+
+    .listTableCard.title{
+        background-color: var(--third-color);
+        display: flex;
+    }
+}
+
+
+/* list */
+
+.listBox{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+
+@media (min-width:1000px) {
+    .listBox{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        width: 95%;
+        height: 100%;
+        padding: 10px;
+        background-color: blue;
+    }
+    
+}

@@ -1,0 +1,120 @@
+.cart{
+    margin-top: 100px;
+
+}
+
+.cartItemsTitle{
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr 1fr 1fr .5fr;
+    align-items: center;
+    color: var(--third-color);
+    font-size: max(1vw,12px);
+
+}
+
+.cartItemsItem{
+    margin: 10px 0;
+    color: black;
+    border-bottom: 3px solid var( --body-color);
+    min-height: 80px;
+}
+
+.cartItemsItem img{
+    width: 50px;
+    min-height: 50px;
+}
+
+.cart hr{
+    height: 3px;
+    background-color: var( --body-color);
+    border: none;
+}
+
+.cartItemsItem .cross{
+    cursor: pointer;
+    background: var(--light-icon-bg);
+    border-radius: 50%;
+    transition: 1s ease;
+}
+
+.cartItemsItem .cross:hover{
+    background: var(--red-icon-bg);
+}
+
+.cartBottom{
+    margin-top: 80px;
+    display: flex;
+    justify-content: space-between;
+    gap: max(12vw,20px);
+}
+
+.cartTotal{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cartTotalDetails{
+    display: flex;
+    justify-content: space-between;
+    color: var(--firt-color);
+}
+
+.cartTotal hr{
+    margin: 10px 0;
+}
+
+.cartTotal button{
+    border: none;
+    color: var(--second-fc-light);
+    background-color: var(--second-color);
+    width: max(15vw,200px);
+    padding: 12px 0;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.cartPromocode{
+    flex: 1;
+}
+
+.cartPromocode p{
+    color: var(--main-color);
+}
+
+.cartPromocodeInput{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+
+    border-radius: 4px;
+/*     width: auto; */
+}
+
+.cartPromocodeInput input{
+    background-color: var(--third-color);
+    border: none;
+    outline: none;
+    padding: 10px;
+    text-align: center;
+}
+
+.cartPromocodeInput button{
+    width: max(10vw,150px);
+    padding: 12px 5px;
+    background-color: var(--fourth-color);
+    border: none;
+    color: var(--third-color);
+    border-radius: 4px;
+}
+
+@media (max-width:750px){
+    .cartBottom{
+        flex-direction: column-reverse;
+    }
+
+    .cartPromocode{
+        justify-content: start ;
+    }
+}

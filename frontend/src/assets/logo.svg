@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="35.280193mm"
+   height="18.520834mm"
+   viewBox="0 0 35.280193 18.520834"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   sodipodi:docname="rysunek.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="1.9578168"
+     inkscape:cx="257.17422"
+     inkscape:cy="262.28195"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <rect
+       x="125.68753"
+       y="187.80896"
+       width="626.99298"
+       height="457.9649"
+       id="rect1-9-0-2" />
+  </defs>
+  <g
+     inkscape:label="Warstwa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-70.42605,-64.761557)">
+    <text
+       xml:space="preserve"
+       transform="matrix(0.22267581,0,0,0.22267581,-9.8598906,22.893885)"
+       id="text1-8-4-1"
+       style="font-size:48px;line-height:0.9;white-space:pre;shape-inside:url(#rect1-9-0-2);fill:#fffb7e;fill-opacity:1"
+       x="242.00391"
+       y="0"><tspan
+         x="357.97266"
+         y="223.20045"
+         id="tspan2"><tspan
+           style="font-family:'Segoe Print';-inkscape-font-specification:'Segoe Print';text-align:center;text-anchor:middle"
+           id="tspan1">Ventus
+</tspan></tspan><tspan
+         x="390.42188"
+         y="269.01505"
+         id="tspan4"><tspan
+           style="font-family:'Segoe Print';-inkscape-font-specification:'Segoe Print';text-align:center;text-anchor:middle"
+           id="tspan3">DeV</tspan></tspan></text>
+  </g>
+</svg>
