@@ -219,7 +219,7 @@ export const getFromCartUrl = '/api/cart/get'
 
 export const objMenu = {
     menu: 'exploreMain',
-    app: 'appDownload',
+  /*   app: 'appDownload', */
     kontakt: 'footer',
   };
 
@@ -350,6 +350,7 @@ export const placeOrderData = {
 
 export const cartItemsData = {
     items: 'przedmioty',
+    name: 'nazwa',
     title: 'tytuł',
     price: 'cena',
     quantity: 'ilość',

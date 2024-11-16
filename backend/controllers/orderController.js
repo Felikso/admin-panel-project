@@ -202,7 +202,7 @@ const verifyOrderCode = async (req, res) => {
 		//await sendWelcomeEmail(user.email, user.name);
 
 		/** mail */
-/* 		var mailOptions = {
+		var mailOptions = {
             from: process.env.EMAIL,
             to: order.address.email,
             subject: 'potwierdzone zamówienie w trakcie realizacji',
@@ -223,7 +223,7 @@ const verifyOrderCode = async (req, res) => {
 			success: true,
 			message: customInfo.emailSentSuccessfully,
             verified: true
-		}); */
+		});
 
         //mail
     }return res.status(400).json({ success: false, message: customErrors.expiriedCode});
