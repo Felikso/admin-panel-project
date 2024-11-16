@@ -7,12 +7,12 @@
 		"server": "nodemon server.js",
 		"dev": "cross-env NODE_ENV=development nodemon backend/index.js",
 		"start": "cross-env NODE_ENV=production node backend/index.js",
-		"build": "npm install && npm install --prefix client && npm run build --prefix admin",
+		"build": "npm install && npm install --prefix frontend && npm run build --prefix frontend",
 		"admin": "cd admin && npm run dev",
-		"client": "cd client && npm run dev",
+		"frontend": "cd frontend && npm run dev",
 		"deva": "concurrently  \"npm run dev\" \"npm run admin\"",
-		"devc": "concurrently  \"npm run dev\" \"npm run client\"",
-		"dew": "concurrently  \"npm run server\" \"npm run admin\" \"npm run client\""
+		"devc": "concurrently  \"npm run dev\" \"npm run frontend\"",
+		"dew": "concurrently  \"npm run server\" \"npm run admin\" \"npm run frontend\""
 	},
 	"keywords": [],
 	"author": "",
