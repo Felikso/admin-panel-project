@@ -12,6 +12,8 @@ const API_RABAT_URL = import.meta.env.MODE === "development" ? "http://localhost
 
 const API_ORDER_URL = import.meta.env.MODE === "development" ? "http://localhost:4000/api/order" : "/api/order";
 
+const API_CART_URL = import.meta.env.MODE === "development" ? "http://localhost:4000/api/cart" : "/api/cart";
+
 
 axios.defaults.withCredentials = true;
 
@@ -182,7 +184,7 @@ export const useAuthStore = create((set) => ({
 		try {
 
 			let activity = itemId?'update':'add';
-			const response = await axios.post(`http://localhost:4000/api/cart/add`,{itemId,userId});
+			const response = await axios.post(`${API_CART_URL}/add`,{itemId,userId});
 			//const response = await axios.post(`${url}${newUrl}`, formData);
 			set({ message: response.data.message });
 			return response
@@ -217,10 +219,6 @@ export const useAuthStore = create((set) => ({
 			throw error;
 		}
 	},
-
-
-
-
 
 	
 }));

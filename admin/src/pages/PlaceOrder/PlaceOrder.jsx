@@ -15,6 +15,7 @@ import toast from 'react-hot-toast';
 import Button from '../../components/Button/Button';
 import { useNavigate } from 'react-router-dom';
 import { pagesLinks } from '../../store/authVar';
+import NetworkErrorText from '../../components/NetworkErrorText/NetworkErrorText'
 
 const PlaceOrder = () => {
 	const {
