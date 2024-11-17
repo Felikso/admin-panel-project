@@ -50,9 +50,9 @@ const ProtectedRoute = ({ children }) => {
 		}
 		
 	}
-	if (!isAuthenticated) {
+/* 	if (!isAuthenticated) {
 		return <Navigate to={`${pagesLinks.login}`} replace />;
-	}
+	} */
 
 	if (!user.isVerified) {
 		return <Navigate to={`${pagesLinks.verifyEmail}`} replace />;
@@ -274,7 +274,7 @@ const scrollToHash = () => {
 					}
 				/>)}
 				{/* catch all routes */}
-				<Route path='*' element={<Navigate to='/' replace />} />
+			{/* 	<Route path='*' element={<Navigate to='/' replace />} /> */}
 			</Routes>
 			<Footer setShowPopupPage={setShowPopupPage}/>
 			<Toaster />
