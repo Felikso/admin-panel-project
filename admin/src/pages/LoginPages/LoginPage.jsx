@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Mail, Lock } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Input from '../../components/Input/Input.jsx';
 import { useAuthStore } from '../../store/authStore.js';
 import {
@@ -16,7 +16,7 @@ import {
 } from './loginVar.js';
 import Button from '../../components/Button/Button.jsx';
 
-const LoginPage = () => {
+const LoginPage = ({panelPath}) => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const checkAdmin = false; //check if user is admin or not
@@ -29,6 +29,10 @@ const LoginPage = () => {
 		console.log(password);
 		await login(email, password, checkAdmin);
 	};
+
+	const location = useLocation();
+	console.log(location.pathname.includes('panel'));
+	
 
 	return (
 		<div className='cardContent'>
@@ -87,6 +91,7 @@ const LoginPage = () => {
 					</Link>
 				</p>
 			</div>
+			{location.pathname.includes(panelPath) && <p>panel administracyjny</p>} 
 		</div>
 	);
 };

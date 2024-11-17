@@ -126,8 +126,6 @@ const scrollToHash = () => {
 
 
 
-
-
 	return (
 		<div className='background flexCol'>
 		{/* 	<BackgroundAnimation count={30} /> */}
@@ -215,14 +213,14 @@ const scrollToHash = () => {
 						</RedirectAuthenticatedUser>
 					}
 				/>
-				<Route
-					path={panelPath+pagesLinks.login}
+					{[panelPath+pagesLinks.login,pagesLinks.login].map(path => <Route path={path} key={path}
 					element={
 						<RedirectAuthenticatedUser>
-							<LoginPage />
+							<LoginPage panelPath={panelPath} />
 						</RedirectAuthenticatedUser>
 					}
-				/>
+				/>)}
+				
 				<Route
 					path={panelPath+pagesLinks.verifyEmail}
 					element={<EmailVerificationPage />}

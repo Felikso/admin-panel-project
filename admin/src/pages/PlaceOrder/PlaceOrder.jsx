@@ -114,7 +114,10 @@ const PlaceOrder = () => {
 
 				  
 			}
-			navigate(pagesLinks.orders);
+			localStorage.removeItem('cartData') //clear cartn 
+			navigate('/')
+			window.location.reload();
+			//navigate(pagesLinks.orders);
 			/* if (session_url) {
 				//window.location.replace(session_url);
 			} else {
