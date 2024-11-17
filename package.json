@@ -4,9 +4,13 @@
 	"description": "",
 	"main": "backend/index.js",
 	"scripts": {
-		"dev": "NODE_ENV=development nodemon backend/index.js",
-		"start": "NODE_ENV=production node backend/index.js",
-		"build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
+		"server": "nodemon server.js",
+		"dev": "cross-env NODE_ENV=development nodemon backend/index.js",
+		"start": "cross-env NODE_ENV=production node backend/index.js",
+		"build": "npm install && npm install --prefix admin && npm run build --prefix admin",
+		"admin": "cd admin && npm run dev",
+		"client": "cd admin && npm run dev",
+		"dew": "concurrently  \"npm run dev\" \"npm run admin\" \"npm run client\""
 	},
 	"keywords": [],
 	"author": "",
