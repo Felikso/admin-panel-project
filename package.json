@@ -1,18 +1,12 @@
 {
-	"name": "mern-auth",
+	"name": "admin-panel-project",
 	"version": "1.0.0",
 	"description": "",
 	"main": "backend/index.js",
 	"scripts": {
-		"server": "nodemon server.js",
-		"dev": "cross-env NODE_ENV=development nodemon backend/index.js",
-		"start": "cross-env NODE_ENV=production node backend/index.js",
-		"build": "npm install && npm install --prefix frontend && npm run build --prefix frontend",
-		"admin": "cd admin && npm run dev",
-		"frontend": "cd frontend && npm run dev",
-		"deva": "concurrently  \"npm run dev\" \"npm run admin\"",
-		"devc": "concurrently  \"npm run dev\" \"npm run frontend\"",
-		"dew": "concurrently  \"npm run server\" \"npm run admin\" \"npm run frontend\""
+		"dev": "NODE_ENV=development nodemon backend/index.js",
+		"start": "NODE_ENV=production node backend/index.js",
+		"build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
 	},
 	"keywords": [],
 	"author": "",

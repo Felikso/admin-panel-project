@@ -15,12 +15,15 @@ import { useAuthStore } from './store/authStore';
 import { useEffect, useState } from 'react';
 import ListPage from './pages/AuthPages/ListPage';
 import AddPage from './pages/AuthPages/AddPage.jsx';
+import OrdersPage from './pages/AuthPages/OrdersPage.jsx'
 import BackgroundAnimation from './components/BackgroundAnimation/BackgroundAnimation.jsx';
 import AdminNavbar from './components/AdminNavbar/AdminNavbar.jsx'
+import Navbar from './components/Navbar/Navbar.jsx'
 
 import { pagesLinks, authList, panelPath } from './utils/variables.jsx';
 import { replacePolishLetters } from './utils/functions.js'
 import NotAdminPage from './pages/NotAdminPage.jsx';
+
 
 
 //
@@ -89,10 +92,8 @@ function App() {
 
 	
 	const { isCheckingAuth, checkAuth, isAuthenticated } = useAuthStore();
-	console.log(isAuthenticated)
 	//const [showLogin, setShowLogin] = useState(false);
 	const [showPopupPage, setShowPopupPage] = useState(false);
-	console.log(showPopupPage);
 	
 	useEffect(() => {
 		checkAuth();
@@ -131,7 +132,7 @@ const scrollToHash = () => {
 		<div className='background flexCol'>
 		{/* 	<BackgroundAnimation count={30} /> */}
 		{showPopupPage && <PopupPage setShowPopupPage={setShowPopupPage} showPopupPage={showPopupPage}/>}
-		<AdminNavbar />
+		<Navbar />
 			<Routes>
 
 			<Route path='/' element={<Home />} />
@@ -139,7 +140,7 @@ const scrollToHash = () => {
           <Route path={`/${pagesLinks.order}`} element={<PlaceOrder />} />
           <Route path={`/${pagesLinks.verify}`} element={<Verify />} />
           <Route path={`/${pagesLinks.myorders}`} element={<MyOrders />} />
-		  <Route path={`/${pagesLinks.verifyOrder}/:_id`} element={<VerifyOrder />} />
+		{/*   <Route path={`/${pagesLinks.verifyOrder}/:_id`} element={<VerifyOrder />} /> */}
 
 				<Route
 					path='/'
@@ -189,10 +190,10 @@ const scrollToHash = () => {
 				/>
 
 			<Route
-					path={panelPath+authList.orders}
+					path={replacePolishLetters(panelPath+authList.orders)}
 					element={
 						<ProtectedRoute>
-							<ListPage />
+							<OrdersPage />
 						</ProtectedRoute>
 					}
 				/>

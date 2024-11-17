@@ -1,36 +1,88 @@
 .navbar{
-    padding: 20px 0px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: fixed;
+    background: var(--nav-bg);
+  /*   width: calc(100% - 150px); */
+
+    top: 0;
+    right: 0;
+    border-top: 3px var(--second-fc) solid;
+    border-bottom: 5px var(--second-fc) solid;
 }
 
-.navbar .logo{
-    width: 150px;
+img.logo{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 87px;
+    padding: 10px;
+    padding-right: 100vw;
+    background-color: var(--main-color);
+    z-index: 1;
+/*     border-top: 3px var(--second-fc) solid;
+    border-bottom: 5px var(--second-fc) solid; */
 }
 
 .navbarMenu{
     display: flex;
     list-style: none;
     gap: 20px;
-    color: var(--main-color);
+    color: var(--nav-color);
     font-size: 18px;
+    align-items: center;
+    height: var(--nav-height);
+}
+
+ul.navbarMenu {
+   /*  margin: 0 30px; */
+    justify-content: right;
+    width: 100%;
 }
 
 .navbarRight{
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 40px;
+    position: relative;
 }
 
-.navbarRight img{
-    width: 30px;
+
+.logOutImg{
+/*     background-color: red; */
+    height: 100%;
+    text-align: center;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    width: 100px;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.logOutImg img{
+    width: 60px;
+    background-color: var(--main-content-bg);
+    border-radius: 50%;
+ 
+}
+
+.logOutImg.hoverImg{
+    top: 80px;
+    z-index: 999999;
+    cursor: pointer;
+}
+
+.navbar {
+    z-index: 100;
 }
 
 .navbar button{
     background: transparent;
     font-size: 16px;
-    color: var(--main-color);
+    color: var(--second-color);
     border: 1px solid var(--second-color);
     padding:10px 30px;
     border-radius: 50px;
@@ -43,9 +95,8 @@
 }
 
 .navbar .active{
-    padding-bottom: 2px;
-    border-bottom: 2px solid var(--second-color);
-    /*scroll-margin: -500px;*/
+    color: var(--nav-bg); 
+    background: var(--second-fc); 
 }
 
 .navbar li{
@@ -57,35 +108,47 @@
     background-color:  var(--third-color);
 }
 
-.navbarSearchIcon img{
-    width: 30px;
+ul.navbarMenu a{
+    text-align: center;
+    min-width: var(--min-nav-link-width);
+/*     filter: brightness(0.3); */
+    padding: var(--nav-border-height) 0;
+    border: var(--nav-border-height) solid var(--nav-bg);
+    height: 100%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    min-width: var(--min-nav-link-width);
+    transition: .3s;
+    /* color: var(--nav-bg);  */
+    background: var(--nav-bg);
 }
 
-.navbarSearchIcon{
-    position: relative;
+ul.navbarMenu a:hover{
+    filter: brightness(0.8); 
 }
 
-.navbarSearchIcon .dot{
-    position: absolute;
-    min-width: 10px;
-    min-height: 10px;
-    background-color: var(--third-color);
-    border-radius: 5px;
-    top: -8px;
-    right: -8px;
-}
 
 
 .navProfile{
     position: relative;
+    background: var(--second-fc);
+    height: calc(var(--nav-height) - var(--nav-border-height) - var(--nav-border-height));
+    width: 100px;
+    padding: 10px;
     text-align: center;
+    margin: 0 10px
+}
+
+.navProfile img{
+    width: 40%;
 }
 
 .navProfileDropdown{
     position: absolute;
     display: none;
     right: 0;
-    z-index: 1;
+    z-index: 100;
     transition: .5s;
 }
 
@@ -96,7 +159,7 @@
     background-color: var(--third-color);
     padding: 12px 25px;
     border-radius: 4px;
-    border: 1px solid var(--main-color);
+    border: 1px solid var(--second-color);
     outline: 2px solid white;
     list-style: none;
     transition: .5s;
@@ -109,13 +172,32 @@
     cursor: pointer;
 }
 
-.navProfileDropdown img{
+/* .navProfileDropdown img{
     width: 20px;
-}
+} */
 
 .navProfileDropdown li:hover{
-    color: var(--main-color);
+    color: var(--second-color);
 }
+
+
+.navbarMenu img{
+    background: var(--second-fc);
+    padding: 3px;
+    border-radius: 50%;
+    width: 100px;
+    cursor: pointer;
+    transition: 1s;
+}
+
+ul.navbarMenu a{
+    margin: 0 var(--nav-border-height);
+}
+
+.addBtn{
+    text-align: center;
+}
+
 @media (max-width:1050px) {
     .navbar .logo{
         width: 140px;
@@ -126,9 +208,6 @@
     }
     .navbarRight{
         gap: 30px;
-    }
-    .navbarRight img{
-        width: 22px;
     }
     .navbarRight button{
         padding: 8px 25px;  
@@ -146,17 +225,99 @@
     .navbarRight{
         gap: 20px;
     }
-    .navbarRight img{
+/*     .navbarRight img{
         width: 20px;
-    }
+    } */
     .navbarRight button{
         padding: 7px 20px;
         font-size: 15px;  
     }
 }
 
+
+    img.logoMenu{
+        display: none;
+    }
+
+    .navbarMenu img{
+        display: none;
+    }
+
 @media (max-width:750px) {
     .navbarMenu{
+    position: fixed;
+    right: -1000px;
+    /* top: -200px; */
+    background: var(--second-fc);
+    display: flex;
+    flex-direction: column;
+        top: 80px;
+        height: 100vh;
+    transition: 1s;
+/*     opacity: 0; */
+  /*   z-index: -100; */
+    padding: 30px 0;
+    justify-content: space-evenly;
+    }
+
+    .navbarMenu.activeMenu{
+        background: var(--nav-bg);
+    /*     transition: 1s; */
+        right: 0;
+       /*  opacity: 1; */
+
+        /* z-index: 1; */
+    }
+    .navbar {
+        justify-content: center;
+        width: 100%;
+        padding: 10px;
+    }
+    .navbar .active{
+        height: auto;
+        width: 100%;
+    }
+
+    ul.navbarMenu{
+        width: 50vw;
+        margin: 0;
+
+    }
+
+    ul.navbarMenu a{
+        /* opacity: 1; */
+        height: auto;
+        width: 100%;
+    }
+
+
+
+    .logOutImg img{
         display: none;
+    }
+
+    .navbarMenu img{
+        width: 60px;
+        padding: 5px;
+        display: flex;
+    }
+
+    img.logoMenu{
+        background: none;
+        border-radius: 0;
+        width: 100px;
+        display: flex;
+/*         position: absolute; */
+      /*   bottom: 0; */
+    }
+
+    .navLogout {
+        height: 100%;
+        width: 90%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 20vh;
+
     }
 }

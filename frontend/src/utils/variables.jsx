@@ -1,6 +1,6 @@
+export const contactMail = 'aleksandrasniegucka@wp.pl'
 
-
-
+export const panelPath = '/panel';
 
 export const pagesLinks = {
     list: '/lista',
@@ -14,7 +14,6 @@ export const pagesLinks = {
     forgotPass: '/forgot-password',
     resetPass: '/reset-password',
     verifyEmail: '/verify-email',
-    verifyOrder: '/weryfikacja-zamowienia',
     cart: 'koszyk',
     aboutUs: 'o nas',
     order: 'podsumowanie',
@@ -22,8 +21,6 @@ export const pagesLinks = {
     myorders: 'zamowienia',
     verifyRabat: 'verify'
 }
-
-export const panelPath = '/panel';
 
 export const authList = {
     list: '/lista',
@@ -76,22 +73,7 @@ export const urlRemoveOrder = '/api/order/remove';
 export const errorMessage = 'Wystąpił błąd, spróbuj ponownie później. :('
 
 
-export const contactMail = 'aleksandrasniegucka@wp.pl'
 
-
-
-export const myOrdersData = {
-    title: 'złożone zamówienia',
-    btnText: 'odśwież zamówienie',
-    refreshInfo: 'informacje odświeżone',
-    quantity: 'liczba',
-    iconTitle: 'dane',
-    orderTitle: 'zamówienie',
-    priceTitle: 'cena',
-    quantityTitle: 'ilość',
-    statusTitle: 'status',
-    refreshTitle: 'odśwież',
-}
 
 export const imgUrl = '/images/'
 export const addCartUrl = '/api/cart/add'
@@ -218,7 +200,6 @@ export const itemsUrl = '/api/items/list'
 
 export const getFromCartUrl = '/api/cart/get'
 
-
 export const objMenu = {
     menu: 'exploreMain',
   /*   app: 'appDownload', */
@@ -260,7 +241,9 @@ export const addData = {
     itemPrice: 'cena',
     typeItemPrice: 'wpisz cenę',
     addBtn: 'dodaj',
-    editBtn: 'edytuj'
+    editBtn: 'edytuj',
+    breakEdit: 'przerwij edycję',
+    acceptEdit: 'zaakceptuj edycję'
 }
 
 export const listData = {
@@ -387,3 +370,21 @@ export const coppyrightInfo = `Copyright 2024 © ${url.replace('https://','').re
 export const allCategoriesName = 'Całe menu'
 
 export const currency = 'PLN'
+
+/* orders */
+
+export const myOrdersData = {
+    title: 'złożone zamówienia',
+    btnText: 'odśwież zamówienie',
+    refreshInfo: 'informacje odświeżone',
+    quantity: 'liczba',
+    iconTitle: 'dane',
+    orderTitle: 'zamówienie',
+    priceTitle: 'cena',
+    quantityTitle: 'ilość',
+    statusTitle: 'status',
+    refreshTitle: 'odśwież',
+    deleteTitle: 'usuń',
+    addressTitle: 'adres',
+    purchaserTitle: 'kontakt'
+}

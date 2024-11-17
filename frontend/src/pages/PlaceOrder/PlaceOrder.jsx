@@ -102,18 +102,19 @@ const PlaceOrder = () => {
 		//const { session_url } = response.data;
 		if (response.data.success) {
 			if(!isAuthenticated) {
-				navigate(pagesLinks.verifyOrder);
+				localStorage.removeItem('cartData') //clear cartn 
 				toast.success(
 					customInfo.unauthenticatedAccpetPlaceOrder,
 					{
 					  duration: 6000,
 					}
 				  );
-	
-				//window.location.replace(session_url);
-			}else{
-				navigate(pagesLinks.order);
+				  navigate('/')
+				  window.location.reload();
+
+				  
 			}
+			navigate(pagesLinks.orders);
 			/* if (session_url) {
 				//window.location.replace(session_url);
 			} else {

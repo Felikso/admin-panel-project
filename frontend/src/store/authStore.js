@@ -6,9 +6,12 @@ const API_URL = import.meta.env.MODE === "development" ? "http://localhost:4000/
 
 const API_ITEMS_URL = import.meta.env.MODE === "development" ? "http://localhost:4000/api/items" : "/api/items";
 
+const API_USERS_URL = import.meta.env.MODE === "development" ? "http://localhost:4000/api/user" : "/api/user";
+
 const API_RABAT_URL = import.meta.env.MODE === "development" ? "http://localhost:4000/api/rabat" : "/api/rabat";
 
 const API_ORDER_URL = import.meta.env.MODE === "development" ? "http://localhost:4000/api/order" : "/api/order";
+
 
 axios.defaults.withCredentials = true;
 
@@ -20,7 +23,6 @@ export const useAuthStore = create((set) => ({
 	isCheckingAuth: true,
 	message: null,
 	checkAdmin: true,
-	token: '',
 
 	signup: async (email, password, name) => {
 		set({ isLoading: true, error: null });
@@ -43,8 +45,7 @@ export const useAuthStore = create((set) => ({
 				user: response.data.user,
 				error: null,
 				isLoading: false,
-				checkAdmin: true,//response.data.user.isAdmin
-				token: response.data.user.token
+				checkAdmin: true//response.data.user.isAdmin
 			});
 		} catch (error) {
 			set({ error: error.response?.data?.message || customErrors.loginin, isLoading: false });
@@ -56,7 +57,7 @@ export const useAuthStore = create((set) => ({
 		set({ isLoading: true, error: null });
 		try {
 			await axios.post(`${API_URL}${pagesLinks.logout}`);
-			set({ user: null, isAuthenticated: false, error: null, isLoading: false, token: '' });
+			set({ user: null, isAuthenticated: false, error: null, isLoading: false });
 		} catch (error) {
 			set({ error: customErrors.logout, isLoading: false });
 			throw error;
@@ -150,6 +151,33 @@ export const useAuthStore = create((set) => ({
 			throw error;
 		}
 	},
+	fetchMailList: async (token) => {
+		try {
+			const response = await axios.get(`${API_USERS_URL}/emails`,	{ headers: { token: token } });
+			return response
+/* 			const response = await axios.get(`${API_USERS_URL}/emails`);
+			return response */
+		} catch (error) {
+			set({
+				error: error.response.data
+			});
+			throw error;
+		}
+	},
+
+	setRabat: async (rabatValue, emailArr, token) => {	
+		try {
+			const response = await axios.post(`${API_RABAT_URL}/set`,	{ rabatValue: rabatValue, emailArr:emailArr  }, { headers: { token: token } });
+			set({ message: response.data.message, rabatCode: response.data.rabatCode });
+			return response
+		} catch (error) {
+			set({
+				error: error.response.data
+			});
+			throw error;
+		}
+	},
+
 	addItemToCart: async (itemId,userId) => {
 		try {
 
@@ -189,6 +217,8 @@ export const useAuthStore = create((set) => ({
 			throw error;
 		}
 	},
+
+
 
 
 

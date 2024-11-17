@@ -8,21 +8,17 @@
 
     top: 0;
     right: 0;
-    border-top: 3px var(--second-fc) solid;
-    border-bottom: 5px var(--second-fc) solid;
 }
 
 img.logo{
     position: fixed;
     top: 0;
     left: 0;
-    height: 87px;
+    height: 80px;
     padding: 10px;
     padding-right: 100vw;
     background-color: var(--main-color);
     z-index: 1;
-/*     border-top: 3px var(--second-fc) solid;
-    border-bottom: 5px var(--second-fc) solid; */
 }
 
 .navbarMenu{

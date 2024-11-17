@@ -21,18 +21,14 @@ const LoginPage = () => {
 	const [password, setPassword] = useState('');
 	const checkAdmin = false; //check if user is admin or not
 
-	const { login, isLoading, error, user, token } = useAuthStore();
+	const { login, isLoading, error } = useAuthStore();
 
 	const handleLogin = async (e) => {
 		e.preventDefault();
-		console.log('login');
-		
+		console.log(email);
+		console.log(password);
 		await login(email, password, checkAdmin);
-
 	};
-
-
-
 
 	return (
 		<div className='cardContent'>
@@ -71,7 +67,6 @@ const LoginPage = () => {
 					{error && <p className='textError'>{error}</p>}
 
 					<Button
-					//type='submit'
 						text={loginBtnText}
 						animateText={loginBtnTextAnimate}
 						animate={isLoading}
