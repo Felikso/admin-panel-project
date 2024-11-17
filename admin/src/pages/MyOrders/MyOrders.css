@@ -1,5 +1,7 @@
 .myOrders{
     margin: 20px 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .myOrders h2, h4{
