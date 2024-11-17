@@ -64,9 +64,6 @@ var transporter = nodemailer.createTransport({
 		await user.save();
 	generateTokenAndSetCookie(res, user._id);
 
-/* 		user.token =  generateTokenAndSetCookie(res, user._id);
-		await user.save(); */
-
 		// jwt
 		
 
@@ -208,11 +205,11 @@ var transporter = nodemailer.createTransport({
 		} */
 
 
-		generateTokenAndSetCookie(res, user._id);
+		
 
 		user.lastLogin = new Date();
 		await user.save();
-
+		generateTokenAndSetCookie(res, user._id);
 		res.status(200).json({
 			success: true,
 			message: customInfo.loggedSuccessfully,
