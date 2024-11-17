@@ -1,6 +1,6 @@
 export const VERIFICATION_EMAIL_TEMPLATE = `
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,17 +12,16 @@ export const VERIFICATION_EMAIL_TEMPLATE = `
   </div>
   <div style="background-color: #f9f9f9; padding: 20px; border-radius: 0 0 5px 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
     <p>Hello,</p>
-    <p>Thank you for signing up! Your verification code is:</p>
+    <p>Udało Ci się pomyślnie złożyć zamówienie. ;) Potwierdź je wpisując kod z obrazka pod wskazany link:</p>
     <div style="text-align: center; margin: 30px 0;">
       <span style="font-size: 32px; font-weight: bold; letter-spacing: 5px; color: #4CAF50;">{verificationCode}</span>
     </div>
-    <p>Enter this code on the verification page to complete your registration.</p>
-    <p>This code will expire in 15 minutes for security reasons.</p>
-    <p>If you didn't create an account with us, please ignore this email.</p>
-    <p>Best regards,<br>Your App Team</p>
+    <a href='https://admin-panel-project-2zrh.onrender.com/zamowienia' style="color: red; font-weight: bold;">Potwierdzam zamówienie.</a>
+    <p>Kod za godzinę wygaśnie!</p>
+    <p>Pozdrowienia - Ventus Dev</p>
   </div>
   <div style="text-align: center; margin-top: 20px; color: #888; font-size: 0.8em;">
-    <p>This is an automated message, please do not reply to this email.</p>
+    <p>To wiadomość automatyczna. Proszę na nią nie odpowiadać.</p>
   </div>
 </body>
 </html>
