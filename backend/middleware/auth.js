@@ -5,7 +5,11 @@ import userModel from '../models/userModel.js';
 const authMiddleware = async (req,res,next) => {
     
     //const {token} = req.headers;
-    const token = req.cookies.token;
+    const tokenCookie = req.cookies.token;
+
+    const {tokenBody} = req.headers;
+
+    const token = tokenCookie ? tokenCookie : tokenBody;
 
     if(!token){
         console.log('bad login')
