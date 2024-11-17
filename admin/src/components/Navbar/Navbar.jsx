@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Navbar.css';
 import { assets } from '../../assets/assets.js';
 import { brandData, formData, authList, loginBtnText, objMenu, objPages } from '../../utils/variables.jsx';
@@ -41,6 +41,15 @@ const Navbar = () => {
 		}
 
 	}
+
+	useEffect(() => {
+		for (let key in authList) {
+			authList[key] = '/panel'+authList[key]
+			}
+	
+	},[]);
+
+
 	
 	const renderMenuList = user?.isAdmin ?  {...authList, ...objPages} : objPages;
 	
@@ -69,7 +78,7 @@ const Navbar = () => {
 							}
 							onClick={() => handleSetMenu(item)}
 						>
-							{renderMenuList[item].replace('/', '')}
+							{renderMenuList[item].replace('/', '').replace('panel/', '')}
 						</a>
 					))}
 									{Object.entries(objMenu).map(([item, i]) => (

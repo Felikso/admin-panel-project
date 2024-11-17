@@ -23,7 +23,7 @@ export const pagesLinks = {
 }
 
 export const authList = {
-    list: '/lista',
+    list: `/lista`,
     add: '/dodaj',
     orders: '/zamówienia', 
 }
