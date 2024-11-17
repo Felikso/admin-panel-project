@@ -226,6 +226,7 @@ var transporter = nodemailer.createTransport({
 
  const logout = async (req, res) => {
 	res.clearCookie("token");
+	console.log('logout!')
 	res.status(200).json({ success: true, message: customInfo.loggedSuccessfully });
 };
 
