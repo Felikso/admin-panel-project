@@ -26,8 +26,6 @@ const LoginPage = ({location}) => {
 
 	const handleLogin = async (e) => {
 		e.preventDefault();
-		console.log(email);
-		console.log(password);
 		await login(email, password, checkAdmin);
 	};
 

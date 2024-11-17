@@ -75,7 +75,7 @@ export const useAuthStore = create((set) => ({
 				checkAdmin: true//response.data.user.isAdmin
 			});
 			if(response.data.user.isAdmin){
-				window.location.replace(pagesLinks.panel+pagesLinks.list);
+				window.location.replace(`${pagesLinks.panel}${pagesLinks.list}`);
 			}
 		} catch (error) {
 			set({ error: error.response?.data?.message || customErrors.loginin, isLoading: false });
@@ -125,7 +125,7 @@ export const useAuthStore = create((set) => ({
 			console.log(error);
 			set({
 				isLoading: false,
-				error: error.response.data.message || customErrors.resetPassMail,
+				error: error.response.data.message || customErrors.resetPass,
 			});
 			throw error;
 		}
@@ -145,7 +145,7 @@ export const useAuthStore = create((set) => ({
 	},
 	fetchAuthList: async () => {
 		try {
-			const response = await axios.get(`${API_ITEMS_URL.pagesLinks.list}`);
+			const response = await axios.get(`${API_ITEMS_URL}${pagesLinks.list}`);
 			return response
 		} catch (error) {
 			set({
@@ -197,7 +197,7 @@ export const useAuthStore = create((set) => ({
 
 	setRabat: async (rabatValue, emailArr, token) => {	
 		try {
-			const response = await axios.post(`${API_RABAT_URL}/set`,	{ rabatValue: rabatValue, emailArr:emailArr  }, { headers: { token: token } });
+			const response = await axios.post(`${API_RABAT_URL}${pagesLinks.set}`,	{ rabatValue: rabatValue, emailArr:emailArr  }, { headers: { token: token } });
 			set({ message: response.data.message, rabatCode: response.data.rabatCode });
 			return response
 		} catch (error) {
@@ -211,8 +211,8 @@ export const useAuthStore = create((set) => ({
 	addItemToCart: async (itemId,userId) => {
 		try {
 
-			let activity = itemId?'update':'add';
-			const response = await axios.post(`${API_CART_URL}/add`,{itemId,userId});
+			//let activity = itemId?'update': pagesLinks.add;
+			const response = await axios.post(`${API_CART_URL}${pagesLinks.add}`,{itemId,userId});
 			//const response = await axios.post(`${url}${newUrl}`, formData);
 			set({ message: response.data.message });
 			return response
