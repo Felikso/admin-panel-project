@@ -18,7 +18,7 @@ const ItemsDisplay = ({category}) => {
     <div className='itemsDisplay' id='itemsDisplay'>
         {netErr &&<NetworkErrorText />}
         <div className="itemsDisplayList">
-          {dataLoading ? <BackgroundAnimation /> :
+          {/* dataLoading */ false ? <BackgroundAnimation /> :
             items_list &&
                 items_list.map((item,i) => {
                     if(category===allCategoriesName || category===item.category){

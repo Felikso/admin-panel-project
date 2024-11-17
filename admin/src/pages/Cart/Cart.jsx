@@ -71,7 +71,7 @@ function Cart() {
 	return (
 		<div className='cart'>
 			        {netErr &&<NetworkErrorText />}
-			          {dataLoading ? <BackgroundAnimation /> :
+			          {/* dataLoading */ false ? <BackgroundAnimation /> :
 					  <>
 			<div className='cartItems'>
 				<div className='cartItemsTitle'>
