@@ -1,13 +1,12 @@
 import React, { useContext, useState } from 'react';
 import './Navbar.css';
 import { assets } from '../../assets/assets.js';
-import { brandData, formData, authList, loginBtnText } from '../../utils/variables.jsx';
+import { brandData, formData, authList, loginBtnText, objMenu, objPages } from '../../utils/variables.jsx';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 import { useAuthStore } from '../../store/authStore';
 import { replacePolishLetters } from '../../utils/functions.js';
 import BurgerMenu from '../BurgerMenu/BurgerMenu.jsx';
-import { objMenu, objPages } from '../../utils/variables.jsx';
 
 const Navbar = () => {
 	const { user, logout, isAuthenticated } = useAuthStore();
@@ -42,6 +41,10 @@ const Navbar = () => {
 		}
 
 	}
+	console.log(user.isAdmin);
+	
+	const renderMenuList = user?.isAdmin ? authList : objPages;
+	
 
 	return (
 		<>
@@ -65,18 +68,18 @@ const Navbar = () => {
 						{item}
 					</a>
 				))}
-					{Object.entries(objPages).map(([item, i]) => (
+					{Object.entries(renderMenuList).map(([item, i]) => (
 						<a
-							href={`${replacePolishLetters(objPages[item])}`}
+							href={`${replacePolishLetters(renderMenuList[item])}`}
 							key={i}
 							className={
-								location.pathname === replacePolishLetters(objPages[item])
+								location.pathname === replacePolishLetters(renderMenuList[item])
 									? 'active'
 									: ''
 							}
 							onClick={() => handleSetMenu(item)}
 						>
-							{objPages[item].replace('/', '')}
+							{renderMenuList[item].replace('/', '')}
 						</a>
 					))}
 					<div className='navLogout'

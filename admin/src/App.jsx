@@ -70,7 +70,7 @@ const ProtectedRoute = ({ children }) => {
 
 	return (
 		<>
-		<AdminNavbar />
+		{/* <AdminNavbar /> */}
 		{children}
 		</>);
 };
