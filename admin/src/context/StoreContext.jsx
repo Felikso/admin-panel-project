@@ -100,18 +100,6 @@ const StoreContextProvider = (props) => {
 	}
 
 
-/* 	if (localStorage.getItem('token') !== null) {
-	
-	} else {
-		console.log('pierwszy render');
-		console.log(user);
-		
-		if(user){
-			localStorage.setItem('token',user.token)
-			console.log(user);
-			
-		}	
-	} */
 	useEffect(()=>{
 		async function loadData() {
 			try {
