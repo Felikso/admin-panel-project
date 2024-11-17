@@ -205,14 +205,21 @@ const scrollToHash = () => {
 
 
 
-				<Route
+	{/* 			<Route
 					path={panelPath+pagesLinks.signup}
 					element={
 						<RedirectAuthenticatedUser>
 							<SignUpPage />
 						</RedirectAuthenticatedUser>
 					}
-				/>
+				/> */}
+					{[panelPath+pagesLinks.signup,pagesLinks.signup].map(path => <Route path={path} key={path}
+					element={
+						<RedirectAuthenticatedUser>
+							<SignUpPage location={location} panelPath={panelPath} />
+						</RedirectAuthenticatedUser>
+					}
+				/>)}
 					{[panelPath+pagesLinks.login,pagesLinks.login].map(path => <Route path={path} key={path}
 					element={
 						<RedirectAuthenticatedUser>
@@ -221,27 +228,51 @@ const scrollToHash = () => {
 					}
 				/>)}
 				
-				<Route
+{/* 				<Route
 					path={panelPath+pagesLinks.verifyEmail}
 					element={<EmailVerificationPage />}
-				/>
-				<Route
+				/> */}
+
+			{[panelPath+pagesLinks.verifyEmail,pagesLinks.verifyEmail].map(path => <Route path={path} key={path}
+					element={
+						<RedirectAuthenticatedUser>
+							<EmailVerificationPage location={location} panelPath={panelPath} />
+						</RedirectAuthenticatedUser>
+					}
+				/>)}
+{/* 				<Route
 					path={panelPath+pagesLinks.forgotPass}
 					element={
 						<RedirectAuthenticatedUser>
 							<ForgotPasswordPage />
 						</RedirectAuthenticatedUser>
 					}
-				/>
+				/> */}
 
-				<Route
+{[panelPath+pagesLinks.forgotPass,pagesLinks.forgotPass].map(path => <Route path={path} key={path}
+					element={
+						<RedirectAuthenticatedUser>
+							<ForgotPasswordPage location={location} panelPath={panelPath} />
+						</RedirectAuthenticatedUser>
+					}
+				/>)}
+
+	{/* 			<Route
 					path={`${panelPath+pagesLinks.resetPass}/:token`}
 					element={
 						<RedirectAuthenticatedUser>
 							<ResetPasswordPage />
 						</RedirectAuthenticatedUser>
 					}
-				/>
+				/> */}
+
+		{[panelPath+pagesLinks.resetPass,pagesLinks.resetPass].map(path => <Route path={path} key={path}
+					element={
+						<RedirectAuthenticatedUser>
+							<ResetPasswordPage location={location} panelPath={panelPath} />
+						</RedirectAuthenticatedUser>
+					}
+				/>)}
 				{/* catch all routes */}
 				<Route path='*' element={<Navigate to='/' replace />} />
 			</Routes>
