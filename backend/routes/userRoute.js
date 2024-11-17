@@ -15,7 +15,7 @@ import { authMiddleware, adminMiddleware } from '../middleware/auth.js'
 
 const userRoute = express.Router();
 
-//userRoute.get("/check-auth", verifyToken, checkAuth);
+userRoute.get("/check-auth", verifyToken, checkAuth);
 
 userRoute.post("/signup", signup);
 userRoute.post("/login", login);
