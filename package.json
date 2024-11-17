@@ -10,7 +10,7 @@
 		"build": "npm install && npm install --prefix admin && npm run build --prefix admin",
 		"admin": "cd admin && npm run dev",
 		"client": "cd admin && npm run dev",
-		"dew": "concurrently  \"npm run server\" \"npm run admin\""
+		"dew": "cross-env NODE_ENV=production concurrently  \"npm run server\" \"npm run admin\""
 	},
 	"keywords": [],
 	"author": "",
