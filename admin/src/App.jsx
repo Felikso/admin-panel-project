@@ -45,16 +45,16 @@ const ProtectedRoute = ({ children }) => {
 	const { isAuthenticated, user } = useAuthStore();
 
 	if(user){
-		if (!user.isAdmin) {
+		if (!user?.isAdmin) {
 			return <Navigate to='/not-admin' replace />;
 		}
 		
 	}
-/* 	if (!isAuthenticated) {
+ 	if (!isAuthenticated) {
 		return <Navigate to={`${pagesLinks.login}`} replace />;
-	} */
+	} 
 
-	if (!user.isVerified) {
+	if (!user?.isVerified) {
 		return <Navigate to={`${pagesLinks.verifyEmail}`} replace />;
 	}
 
@@ -81,7 +81,7 @@ const ProtectedRoute = ({ children }) => {
 const RedirectAuthenticatedUser = ({ children }) => {
 	const { isAuthenticated, user } = useAuthStore();
 
-	if (isAuthenticated && user.isVerified) {
+	if (isAuthenticated && user?.isVerified) {
 		return <Navigate to='/' replace />;
 	}
 
@@ -274,7 +274,7 @@ const scrollToHash = () => {
 					}
 				/>)}
 				{/* catch all routes */}
-			{/* 	<Route path='*' element={<Navigate to='/' replace />} /> */}
+			 	<Route path='*' element={<Navigate to='/' replace />} /> 
 			</Routes>
 			<Footer setShowPopupPage={setShowPopupPage}/>
 			<Toaster />
