@@ -142,11 +142,15 @@ const Navbar = () => {
 						onClick={()=>{
 							var width = window.innerWidth
 							if(width <= 750) {
-								navigate("/");
+								if(user){
+									handleLogout()
+								}else{
+									navigate("/")
+								}
 							  }
 						}}
 						/>
-						<p>{user? user.name : loginBtnText}</p>
+						<p>{user ? user.name : loginBtnText}</p>
 					</div>
 					<a className={`logOutImg ${isHovered ? 'hoverImg' : ''}`} >
 					{isAuthenticated?
