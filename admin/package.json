@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "admin-panel-project": "file:..",
     "auth-tutorial": "file:..",
     "axios": "^1.7.3",
     "crypto": "^1.0.1",
