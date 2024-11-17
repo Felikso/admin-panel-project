@@ -18,10 +18,10 @@ const app = express();
 const PORT = 4000;
 const __dirname = path.resolve();
 
-app.use(cors({ origin: process.env.CLIENT_URL?process.env.CLIENT_URL:'http://localhost:5173', credentials: true }));
+app.use(cors({ origin: process.env.CLIENT_URL/* ?process.env.CLIENT_URL:'http://localhost:5173' */, credentials: true }));
 
 app.use((req, res, next) => {
-	const allowedOrigins = [process.env.CLIENT_URL, 'http://localhost:5173/login', 'http://localhost:5174', 'http://localhost:5173', 'http://192.168.0.170:5173', 'http://localhost:4000'];
+	const allowedOrigins = [process.env.CLIENT_URL/* ,  'http://localhost:5174', 'http://localhost:5173', 'http://192.168.0.170:5173', 'http://localhost:4000' */];
 	const origin = req.headers.origin;
 	if (allowedOrigins.includes(origin)) {
 		 res.setHeader('Access-Control-Allow-Origin', origin);
