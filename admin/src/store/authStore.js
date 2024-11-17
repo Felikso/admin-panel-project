@@ -74,6 +74,9 @@ export const useAuthStore = create((set) => ({
 				isLoading: false,
 				checkAdmin: true//response.data.user.isAdmin
 			});
+			if(response.data.user.isAdmin){
+				window.location.replace(pagesLinks.panel+pagesLinks.list);
+			}
 		} catch (error) {
 			set({ error: error.response?.data?.message || customErrors.loginin, isLoading: false });
 			throw error;
@@ -142,7 +145,7 @@ export const useAuthStore = create((set) => ({
 	},
 	fetchAuthList: async () => {
 		try {
-			const response = await axios.get(`${API_ITEMS_URL}/list`);
+			const response = await axios.get(`${API_ITEMS_URL.pagesLinks.list}`);
 			return response
 		} catch (error) {
 			set({

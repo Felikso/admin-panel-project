@@ -28,7 +28,7 @@ const PlaceOrder = () => {
 		netErr,
 	} = useContext(StoreContext);
 
-	const { user, logout, isAuthenticated } = useAuthStore();
+	const { user, isAuthenticated } = useAuthStore();
 
 	const [data, setData] = useState(
 		user?.address
