@@ -216,7 +216,7 @@ const scrollToHash = () => {
 					{[panelPath+pagesLinks.login,pagesLinks.login].map(path => <Route path={path} key={path}
 					element={
 						<RedirectAuthenticatedUser>
-							<LoginPage panelPath={panelPath} />
+							<LoginPage location={location} panelPath={panelPath} />
 						</RedirectAuthenticatedUser>
 					}
 				/>)}

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Mail, Lock } from 'lucide-react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Input from '../../components/Input/Input.jsx';
 import { useAuthStore } from '../../store/authStore.js';
 import {
@@ -15,8 +15,9 @@ import {
 	loginPagesLinks,
 } from './loginVar.js';
 import Button from '../../components/Button/Button.jsx';
+import {CardContent} from './CardContent.jsx';
 
-const LoginPage = ({panelPath}) => {
+const LoginPage = ({location}) => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const checkAdmin = false; //check if user is admin or not
@@ -30,14 +31,10 @@ const LoginPage = ({panelPath}) => {
 		await login(email, password, checkAdmin);
 	};
 
-	const location = useLocation();
-	console.log(location.pathname.includes('panel'));
-	
 
 	return (
-		<div className='cardContent'>
-			<div className='formBox'>
-				<h2 className='title textTogradient'>{welcomeTitle}</h2>
+		<>
+		<CardContent location={location} title={welcomeTitle}>
 
 				<form onSubmit={handleLogin}>
 					
@@ -77,7 +74,7 @@ const LoginPage = ({panelPath}) => {
 						color={'0'}
 					></Button>
 				</form>
-			</div>
+			
 			<div className='infoBox'>
 				<p className='infoText'>
 					{dontHaveAccount}
@@ -91,8 +88,7 @@ const LoginPage = ({panelPath}) => {
 					</Link>
 				</p>
 			</div>
-			{location.pathname.includes(panelPath) && <p>panel administracyjny</p>} 
-		</div>
+		</CardContent></>
 	);
 };
 export default LoginPage;
