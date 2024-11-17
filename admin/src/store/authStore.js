@@ -75,7 +75,7 @@ export const useAuthStore = create((set) => ({
 				checkAdmin: true//response.data.user.isAdmin
 			});
 			if(response.data.user.isAdmin){
-				window.location.replace(`${pagesLinks.panel}${pagesLinks.list}`);
+				//window.location.replace(`${pagesLinks.panel}${pagesLinks.list}`);
 			}
 		} catch (error) {
 			set({ error: error.response?.data?.message || customErrors.loginin, isLoading: false });
