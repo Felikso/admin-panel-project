@@ -8,9 +8,9 @@ import { generateTokenAndSetCookie } from "../utils/generateTokenAndSetCookie.js
 	sendResetSuccessEmail,
 	sendVerificationEmail,
 	sendWelcomeEmail,
-} from "../mailtrap/emails.js"; */
+} from "../emailTemplates/emails.js"; */
 import {
-
+	VERIFICATION_EMAIL_TEMPLATE,
 	welcomeTemplate,
 } from '../utils/emailTemplates.js'
 import nodemailer from 'nodemailer'

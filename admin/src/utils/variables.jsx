@@ -62,7 +62,8 @@ export const customInfo = {
 
 
 
-export const url = 'http://localhost:4000';
+//export const url = import.meta.env.MODE === "development" ? "http://localhost:4000" : process.env.PORT;
+export const url = 'https://admin-panel-project-w7s5.onrender.com';
 export const urlAdd = '/api/items/add';
 export const urlEdit = '/api/items/update';
 export const urlList = '/api/items/list';
