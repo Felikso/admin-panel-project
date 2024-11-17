@@ -38,7 +38,11 @@ const authOrderMiddleware = async (req,res,next) => {
 
     
     //const {token} = req.headers;
-    const token = req.cookies.token;
+    const tokenCookie = req.cookies.token;
+
+    const {tokenBody} = req.headers;
+
+    const token = tokenCookie ? tokenCookie : tokenBody;
 
  /*    if(!token){
         console.log('bad login')
@@ -74,7 +78,12 @@ const authOrderMiddleware = async (req,res,next) => {
 
 const adminMiddleware = async (req,res,next) => {
     
-	const token = req.cookies.token;
+    //const {token} = req.headers;
+    const tokenCookie = req.cookies.token;
+
+    const {tokenBody} = req.headers;
+
+    const token = tokenCookie ? tokenCookie : tokenBody;
     
     if(!token){
         console.log('bad token')
