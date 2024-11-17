@@ -41,9 +41,8 @@ const Navbar = () => {
 		}
 
 	}
-	console.log(user.isAdmin);
 	
-	const renderMenuList = user?.isAdmin ? authList : objPages;
+	const renderMenuList = user?.isAdmin ?  {...authList, ...objPages} : objPages;
 	
 
 	return (
@@ -57,17 +56,8 @@ const Navbar = () => {
 				/>
 			</Link>
 			<div className='navbar'>
-				<ul className={`navbarMenu ${activeClass}`}>
-				{Object.entries(objMenu).map(([item, i]) => (
-					<a
-						href={`/#${objMenu[item]}`}
-						key={i}
-						className={menu === item ? 'active' : ''}
-						onClick={() => handleSetMenu(item)}
-					>
-						{item}
-					</a>
-				))}
+				<ul className={`navbarMenu ${activeClass}`} /* style={{flexDirection: 'row-reverse'}} */>
+
 					{Object.entries(renderMenuList).map(([item, i]) => (
 						<a
 							href={`${replacePolishLetters(renderMenuList[item])}`}
@@ -82,6 +72,16 @@ const Navbar = () => {
 							{renderMenuList[item].replace('/', '')}
 						</a>
 					))}
+									{Object.entries(objMenu).map(([item, i]) => (
+					<a
+						href={`/#${objMenu[item]}`}
+						key={i}
+						className={menu === item ? 'active' : ''}
+						onClick={() => handleSetMenu(item)}
+					>
+						{item}
+					</a>
+				))}
 					<div className='navLogout'
 		 
 					>

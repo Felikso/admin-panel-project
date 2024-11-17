@@ -35,6 +35,7 @@ img.logo{
     height: var(--nav-height);
 }
 
+
 ul.navbarMenu {
    /*  margin: 0 30px; */
     justify-content: right;
@@ -321,3 +322,17 @@ ul.navbarMenu a{
 
     }
 }
+
+@media (min-width:900px) {
+    /* Hide all child elements */
+    .navbarMenu > * {
+        display: none !important;
+      }
+      
+      /* Show only the first three child elements */
+      .navbarMenu > :nth-child(-n+3) {
+        display: flex !important;
+      }
+}
+
+
