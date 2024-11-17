@@ -15,12 +15,12 @@ import rabatRoute from './routes/rabatRoute.js'
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 4000;
+const PORT = 4000;
 const __dirname = path.resolve();
 
 app.use(cors({ origin: process.env.CLIENT_URL/* ?process.env.CLIENT_URL:'http://localhost:5173' */, credentials: true }));
 
-app.use((req, res, next) => {
+/* app.use((req, res, next) => {
 	const allowedOrigins = [process.env.CLIENT_URL,  'http://localhost:5174', 'http://localhost:5173', 'http://192.168.0.170:5173', 'http://localhost:4000'];
 	const origin = req.headers.origin;
 	if (allowedOrigins.includes(origin)) {
@@ -28,11 +28,11 @@ app.use((req, res, next) => {
 	}
 	res.header('Access-Control-Allow-Methods', 'GET, OPTIONS, POST');
 	res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-	//res.header('Access-Control-Allow-Headers', '*');
+	res.header('Access-Control-Allow-Headers', '*');
 	res.header('Access-Control-Allow-Credentials', true);
 	return next();
   });
-
+ */
 
 app.use(express.json()); // allows us to parse incoming requests:req.body
 app.use(cookieParser()); // s us to parse incoming cookies
