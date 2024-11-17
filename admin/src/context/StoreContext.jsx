@@ -85,20 +85,19 @@ const StoreContextProvider = (props) => {
 
 		if(response.data.success){
 			setCartItems(response.data.cartData);
-			console.log(response.data)
 			setDataLoading(!response.data.success)
 		}
 
 
 	}
 
-	if(!isAuthenticated){
+/* 	if(!isAuthenticated){
 		console.log('cleaning time');
 		localStorage.removeItem('token')
 		//localStorage.removeItem('cartData') //clear cart
 		//setDataLoading(!dataLoading)
 	}
-
+ */
 
 /* 	if (localStorage.getItem('token') !== null) {
 	
