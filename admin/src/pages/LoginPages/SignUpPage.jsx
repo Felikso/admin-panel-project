@@ -5,19 +5,17 @@ import Input from '../../components/Input/Input.jsx';
 import { useAuthStore } from '../../store/authStore.js';
 import {
 	formData,
-	loginPagesLinks,
-	createAccountData,
-	customInfo,
-} from './loginVar.js';
+	welcomeTitle,
+	pagesLinks,
+    createAccountData,
+} from '../../utils/variables.jsx';
 import Button from '../../components/Button/Button.jsx';
-import PasswordStrengthMeter from '../../components/PasswordStrengthMeter/PasswordStrengthMeter.jsx';
+import PasswordStrengthMeter from '../../components/PasswordStrengthMeter.jsx';
 
 const SignUpPage = () => {
-	const [name, setName] = useState('');
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
-
-	const [strongPassword, setStrongPassword] = useState(false);
+	const [name, setName] = useState("");
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
 	const navigate = useNavigate();
 
 	const { signup, error, isLoading } = useAuthStore();
@@ -27,7 +25,7 @@ const SignUpPage = () => {
 
 		try {
 			await signup(email, password, name);
-			navigate(loginPagesLinks.verifyEmail);
+			navigate(pagesLinks.verifyEmail);
 		} catch (error) {
 			console.log(error);
 		}
@@ -35,14 +33,10 @@ const SignUpPage = () => {
 	return (
 		<div className='cardContent'>
 			<div className='formBox'>
-				<h2 className='title textTogradient'>
-					{createAccountData.createAccountTitle}
-				</h2>
+				<h2 className='title textTogradient'>{createAccountData.createAccountTitle}</h2>
 
-				<form
-					onSubmit={strongPassword ? handleSignUp : (e) => e.preventDefault()}
-				>
-					<Input
+				<form onSubmit={handleSignUp}>
+                    <Input
 						icon={User}
 						type='text'
 						placeholder={formData.namePlaceholder}
@@ -69,14 +63,7 @@ const SignUpPage = () => {
 					/>
 
 					{error && <p className='textError'>{error}</p>}
-					{!strongPassword && (
-						<p className='infoLink'>{customInfo.strongPassword}</p>
-					)}
-
-					<PasswordStrengthMeter
-						password={password}
-						setStrongPassword={setStrongPassword}
-					/>
+					<PasswordStrengthMeter password={password} />
 					<Button
 						text={createAccountData.signUpBtnText}
 						animateText={createAccountData.signUpProcess}
@@ -90,7 +77,7 @@ const SignUpPage = () => {
 					{createAccountData.haveAccount}
 					{'   '}
 					<Link
-						to={loginPagesLinks.login}
+						to={pagesLinks.login}
 						className='animationLink'
 						data-replace={createAccountData.loginBtnText}
 					>

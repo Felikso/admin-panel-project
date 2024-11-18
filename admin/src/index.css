@@ -1,48 +1,235 @@
-@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Itim&family=Outfit:wght@100..900&display=swap');
 
 :root {
-  --main-color: #8a461b;
-  --second-color: rgb(243 24 24);
+  --main-color: aliceblue;
+  --main-fc: rgb(205, 205, 205);
+  --second-fc: rgb(255, 166, 0);
+  --second-color: chocolate;
   --third-color: rgb(240, 200, 107);
   --fourth-color: #3d1e0c;
   --light-color: #4ea0ff;
+  --main-gradient: radial-gradient(circle, rgba(255,78,0,1) 0%, rgba(122,35,5,1) 60%, rgba(102,0,0,1) 100%);
 
-  /* footer*/
-  --footer-font-color: var(--third-color);
-  --footer-bg-color: var(--fourth-color);
+  --animation-link-color: rgb(100, 100, 100);
+  --animation-link-color-hover: var(--second-fc);
+
+  --btn-color: white;
+  --btn-hover: rgba(255, 251, 0, 0.637); /* btn shadow */
+
+  --icon-color: var(--second-fc);
 }
-
 
 *{
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Itim", cursive;
-  font-weight: 400;
-  font-style: normal;
-  scroll-behavior: smooth;  
+  font-family: Outfit;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body{
   min-height: 100vh;
+  color: var(--fourth-color);
+  background: rgb(0,0,0);
+  background: radial-gradient(circle, rgba(0,0,0,1) 50%, rgba(122,69,5,1) 75%, rgba(255,78,0,1) 100%);
 }
 
 a{
   text-decoration: none;
-  color:inherit;
+  color: inherit;
 }
 
-.app{
-  width: 80%;
-  margin: auto;
+hr{
+  border: none;
+  height: 1px;
+  background-color: var(--second-color);
 }
 
+.appContent{
+  display: flex;
+}
 
-@keyframes fadeIn {
-  0%{
-    opacity: 0;
+.flexCol{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cursor{
+  cursor: pointer;
+}
+
+.background{
+display: flex; 
+overflow: hidden; 
+position: relative; 
+justify-content: center; 
+align-items: center; 
+min-height: 100vh; 
+
+/* background-image: linear-gradient(to bottom right); 
+background-color: #111827; 
+background-color: #064E3B;  */
+}
+
+.cardContent{
+    padding: 2rem; 
+    margin-top: 2.5rem; 
+    border-radius: 0.75rem; 
+    border-width: 1px; 
+    border-color: #1F2937; 
+    width: 100%; 
+    max-width: 28rem; 
+    background-color: #111827; 
+    --bg-opacity: 0.8; 
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); 
+    transition: .3s;
+    animation: fadeIn;
+}
+
+.title{
+margin-bottom: 1.5rem; 
+font-size: 1.5rem;
+line-height: 2.25rem; 
+font-weight: 700; 
+text-align: center; 
+}
+
+.textTogradient{
+color: transparent; 
+background-clip: text; 
+background-image: var(--main-gradient);
+background-color: #000000; 
+}
+
+.linksBox{
+    display: flex; 
+margin-bottom: 1.5rem; 
+align-items: center; 
+}
+
+.infoBox{
+display: flex; 
+padding-top: 1rem;
+padding-bottom: 1rem; 
+padding-left: 2rem;
+padding-right: 2rem; 
+justify-content: center; 
+background-color: #111827; 
+--bg-opacity: 0.5; 
+
+}
+
+.infoText{
+    font-size: 0.875rem;
+line-height: 1.25rem; 
+color: #9CA3AF; 
+
+}
+
+.textError{
+    margin-bottom: 0.5rem; 
+    font-weight: 600; 
+    color: #EF4444; 
+}
+
+.textAccept{
+    margin-bottom: 0.5rem; 
+    font-weight: 600; 
+    color: #4aef44; 
+}
+
+.infoLink{
+    color: #637d74; 
+}
+
+.icon{
+    color: var(--icon-color);
+}
+
+.infoLinkcolor:hover {
+ text-decoration: underline; 
+ }
+
+ .animationLink {
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
   }
-  100%{
-    opacity: 100%;
+  
+  .animationLink::before,
+  .animationLink::after {
+   content: '';
+    position: absolute;
+    width: 100%;
+    left: 0;
   }
-}
+  .animationLink::before {
+    background-color: var(--animation-link-color-hover);
+    height: 2px;
+    bottom: 0;
+    transform-origin: 100% 50%;
+    transform: scaleX(0);
+    transition: transform .3s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+  .animationLink::after {
+    content: attr(data-replace);
+    height: 100%;
+    top: 0;
+    transform-origin: 100% 50%;
+    transform: translate3d(200%, 0, 0);
+    transition: transform .3s cubic-bezier(0.76, 0, 0.24, 1);
+    color: var(--animation-link-color-hover);
+  }
+  
+  .animationLink:hover::before {
+    transform-origin: 0% 50%;
+    transform: scaleX(1);
+  }
+  .animationLink:hover::after {
+    transform: translate3d(0, 0, 0);
+  }
+  
+  .animationLink span {
+    display: inline-block;
+    transition: transform .3s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+  
+  .animationLink:hover span {
+    transform: translate3d(-200%, 0, 0);
+  }
+  
+  
+  .animationLink {
+      text-decoration: none;
+      color: var(--animation-link-color);
+      font-weight: 700;
+      vertical-align: top;
+  }
+
+  /* https://codepen.io/team/css-tricks/pen/jOarVmy */
+
+  .formBox{
+    text-align: center;
+  }
+
+
+  /*
+  https://codepen.io/ianfarb/pen/neEWbP
+  for navlinks + background change
+
+  https://codepen.io/shshaw/pen/wWQeEB
+  hover on card another have in this time opacity
+  */
+
+
+  @keyframes fadeIn {
+    0%{
+      opacity: 0;
+    }
+    100%{
+      opacity: 100%;
+    }
+  }

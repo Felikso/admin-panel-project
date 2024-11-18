@@ -1,15 +1,19 @@
 .input{
- padding-top: 0.5rem;
+    padding-top: 0.5rem;
 padding-bottom: 0.5rem; 
 padding-right: 0.75rem; 
 padding-left: 2.5rem; 
 border-radius: 0.5rem; 
-border-width: 5px; 
-border-color: var(--second-bg-light);
+border-width: 1px; 
+border-color: #374151; 
 width: 100%; 
-color: var(--main-bg);
-background-color: var(--second-bg);
+color: #ffffff; 
+background-color: #1F2937; 
 --bg-opacity: 0.5; 
+transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+transition-duration: 300ms; 
+transition-duration: 200ms; 
 }
 
 .iconBox{
@@ -23,8 +27,11 @@ align-items: center;
 pointer-events: none; 
 }
 
+.icon{
+    color: #10B981; 
+}
 
 .inputBox{
     position: relative; 
-    margin: 1.5rem 0; 
+margin-bottom: 1.5rem; 
 }
