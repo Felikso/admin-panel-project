@@ -2,9 +2,9 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="7.9374838mm"
-   height="1.3673584mm"
-   viewBox="0 0 7.9374838 1.3673584"
+   width="47.497444mm"
+   height="12.824306mm"
+   viewBox="0 0 47.497444 12.824306"
    version="1.1"
    id="svg1"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
@@ -27,18 +27,25 @@
      inkscape:label="Warstwa 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(267.85261,-185.56776)">
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:21.3841px;line-height:0.9;font-family:'Microsoft Sans Serif';-inkscape-font-specification:'Microsoft Sans Serif';text-align:center;text-anchor:middle;fill:#ff0000;fill-opacity:1;stroke-width:0.64598"
-       x="-190.92088"
-       y="262.96912"
-       id="text39"
-       transform="scale(1.3821634,0.72350346)"><tspan
-         sodipodi:role="line"
-         id="tspan39"
-         style="fill:#ff0000;stroke-width:0.64598"
-         x="-190.92088"
-         y="262.96912">-</tspan></text>
+     transform="translate(-66.077547,-109.78861)">
+    <path
+       sodipodi:type="star"
+       style="fill:#d40000;fill-opacity:1;stroke-width:0.264583"
+       id="path1"
+       inkscape:flatsided="false"
+       sodipodi:sides="2"
+       sodipodi:cx="35.166023"
+       sodipodi:cy="54.660229"
+       sodipodi:r1="63.508125"
+       sodipodi:r2="17.147194"
+       sodipodi:arg1="0"
+       sodipodi:arg2="1.5707963"
+       inkscape:rounded="0.26"
+       inkscape:randomized="0"
+       d="m 98.674149,54.660229 c 0,17.103392 -46.404733,17.147194 -63.508125,17.147194 -17.103393,0 -63.508126,-0.0438 -63.508126,-17.147194 -1e-6,-17.103393 46.404732,-17.147194 63.508125,-17.147194 17.103392,0 63.508125,0.0438 63.508126,17.147194 z"
+       transform="matrix(-0.37394776,0,0,-0.37394776,102.97652,136.64083)"
+       inkscape:export-filename="add_icon_white.svg"
+       inkscape:export-xdpi="18.716797"
+       inkscape:export-ydpi="18.716797" />
   </g>
 </svg>

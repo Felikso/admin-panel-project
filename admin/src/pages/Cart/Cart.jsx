@@ -13,7 +13,7 @@ import BackgroundAnimation  from '../../components/BackgroundAnimation/Backgroun
 import { useAuthStore } from '../../store/authStore';
 
 function Cart() {
-	const { items, name, price, quantity, total, remove } = cartItemsData;
+	const { items, title, price, quantity, total, remove } = cartItemsData;
 
 	const { verifyRabatCode, user } = useAuthStore();
 
@@ -71,12 +71,12 @@ function Cart() {
 	return (
 		<div className='cart'>
 			        {netErr &&<NetworkErrorText />}
-			          {/* dataLoading */ false ? <BackgroundAnimation /> :
+			          {dataLoading ? <BackgroundAnimation /> :
 					  <>
 			<div className='cartItems'>
 				<div className='cartItemsTitle'>
-					<p></p>
-					<p>{name}</p>
+					<p>{items}</p>
+					<p>{title}</p>
 					<p>{price}</p>
 					<p>{quantity}</p>
 					<p>{total}</p>
@@ -87,8 +87,8 @@ function Cart() {
 				{items_list.map((item, i) => {
 					if (cartItems[item._id] > 0) {
 						return (
-							
-								<div key={i} className='cartItemsTitle cartItemsItem'>
+							<div key={i}>
+								<div  className='cartItemsTitle cartItemsItem'>
 									<img src={url+imgUrl+item.image} alt={`zdjęcie ${item.name}`} />
 									<p>{item.name}</p>
 									<p>{item.price}{currency}</p>
@@ -101,7 +101,7 @@ function Cart() {
 								 
 								 
 								</div>
-							
+							</div>
 						);
 					}
 				})}

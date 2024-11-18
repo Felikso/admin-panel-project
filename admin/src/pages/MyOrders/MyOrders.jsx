@@ -30,7 +30,6 @@ const MyOrders = () => {
 		);
 
 		setData(response.data.data);
-
 		toast.success(myOrdersData.refreshInfo);
 	};
 

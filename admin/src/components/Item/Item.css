@@ -2,13 +2,10 @@
     width: 100%;
     margin: auto;
     border-radius: 15px;
-    -webkit-box-shadow: -9px 9px 24px 0px rgb(0, 0, 0);
-    -moz-box-shadow: -9px 9px 24px 0px rgb(0, 0, 0);
-    box-shadow: -9px 9px 24px 0px rgb(0, 0, 0);
+    box-shadow: 0px 0px 10px #00000015;
     transition: .3s;
     animation: fadeIn;
     min-height: 400px;
-    background: var(--body-color);
 }
 
 .item:hover{
@@ -80,13 +77,9 @@
     gap: 10px;
     padding: 6px;
     border-radius: 50px;
-    background-color: var(--second-fc);
+    background-color: var(--third-color);
     transition: .5s;
     cursor: pointer;
-}
-
-.itemAddBg{
-    background-color: var(--main-color);
 }
 
 .itemCounter img{

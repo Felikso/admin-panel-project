@@ -30,14 +30,12 @@ const Item = ({ item }) => {
 			<div className='itemImageContainer'>
 				<img src={url+'/images/'+image} alt={name} className='itemImage' />
 				{!cartItems[_id] ? ( /* !cartItems[_id] with that was error */
-<div className='animatedIcons'>
 					<img
 						className='add'
 						onClick={() => {addToCart(_id), console.log(_id);}}
 						src={assets.add_icon_white}
 						alt=''
 					/>
-					</div>
 				) : (
 					<div className='itemCounter'>
 						<img
@@ -46,7 +44,6 @@ const Item = ({ item }) => {
 							alt='usuń'
 						/>
 						<p>{cartItems[_id]}</p>
-						
 						<img
 							onClick={() => {addToCart(_id), console.log(_id);}}
 							src={assets.add_icon_green}

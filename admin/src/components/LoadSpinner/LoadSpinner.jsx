@@ -2,19 +2,17 @@ import React from 'react'
 
 const LoadSpinner = () => {
   return (
-    <div className="sk-circle">
-  <div className="sk-circle1 sk-child"></div>
-  <div className="sk-circle2 sk-child"></div>
-  <div className="sk-circle3 sk-child"></div>
-  <div className="sk-circle4 sk-child"></div>
-  <div className="sk-circle5 sk-child"></div>
-  <div className="sk-circle6 sk-child"></div>
-  <div className="sk-circle7 sk-child"></div>
-  <div className="sk-circle8 sk-child"></div>
-  <div className="sk-circle9 sk-child"></div>
-  <div className="sk-circle10 sk-child"></div>
-  <div className="sk-circle11 sk-child"></div>
-  <div className="sk-circle12 sk-child"></div>
+    <div className="dootsBox">
+<div className="dots-bars-1"></div>
+<div className="dots-bars-2"></div>
+<div className="dots-bars-3"></div>
+<div className="dots-bars-4"></div>
+<div className="dots-bars-5"></div>
+<div className="dots-bars-6"></div>
+<div className="dots-bars-7"></div>
+<div className="dots-bars-8"></div>
+<div className="dots-bars-9"></div>
+<div className="dots-bars-10"></div>
 </div>
   )
 }

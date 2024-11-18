@@ -1,7 +1,7 @@
-import React, {  useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './AdminNavbar.css';
 import { assets } from '../../assets/assets.js';
-import { brandData, loginBtnText } from '../../utils/variables.jsx';
+import { brandData, formData, authList, loginBtnText } from '../../utils/variables.jsx';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 import { useAuthStore } from '../../store/authStore';
@@ -42,8 +42,6 @@ const AdminNavbar = () => {
 		}
 
 	}
-
-	
 
 	return (
 		<>
@@ -104,8 +102,8 @@ const AdminNavbar = () => {
 												src={assets.login_icon}
 												alt='zaloguj'
 												onClick={() => {
-													navigate("/login");
 													setOpenMenu();
+													navigate("/login");
 													
 												}}
 											/>

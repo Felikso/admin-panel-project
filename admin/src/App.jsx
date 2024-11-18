@@ -15,15 +15,12 @@ import { useAuthStore } from './store/authStore';
 import { useEffect, useState } from 'react';
 import ListPage from './pages/AuthPages/ListPage';
 import AddPage from './pages/AuthPages/AddPage.jsx';
-import OrdersPage from './pages/AuthPages/OrdersPage.jsx'
 import BackgroundAnimation from './components/BackgroundAnimation/BackgroundAnimation.jsx';
 import AdminNavbar from './components/AdminNavbar/AdminNavbar.jsx'
-import Navbar from './components/Navbar/Navbar.jsx'
 
-import { pagesLinks, authList, panelPath } from './utils/variables.jsx';
-import { replacePolishLetters } from './utils/functions.js'
+import { pagesLinks, authList } from './utils/variables.jsx';
+/* import { replacePolishLetters } from './utils/functions.js' */
 import NotAdminPage from './pages/NotAdminPage.jsx';
-
 
 
 //
@@ -50,9 +47,9 @@ const ProtectedRoute = ({ children }) => {
 		}
 		
 	}
-/* 	if (!isAuthenticated) {
+	if (!isAuthenticated) {
 		return <Navigate to={`${pagesLinks.login}`} replace />;
-	} */
+	}
 
 	if (!user.isVerified) {
 		return <Navigate to={`${pagesLinks.verifyEmail}`} replace />;
@@ -70,7 +67,7 @@ const ProtectedRoute = ({ children }) => {
 
 	return (
 		<>
-		{/* <AdminNavbar /> */}
+		<AdminNavbar />
 		{children}
 		</>);
 };
@@ -92,9 +89,9 @@ function App() {
 
 	
 	const { isCheckingAuth, checkAuth, isAuthenticated } = useAuthStore();
+	console.log(isAuthenticated)
 	//const [showLogin, setShowLogin] = useState(false);
 	const [showPopupPage, setShowPopupPage] = useState(false);
-	
 	useEffect(() => {
 		checkAuth();
 	}, [checkAuth]);
@@ -126,11 +123,12 @@ const scrollToHash = () => {
 
 
 
+
+
 	return (
 		<div className='background flexCol'>
 		{/* 	<BackgroundAnimation count={30} /> */}
-		{showPopupPage && <PopupPage setShowPopupPage={setShowPopupPage} showPopupPage={showPopupPage}/>}
-		<Navbar />
+		<AdminNavbar />
 			<Routes>
 
 			<Route path='/' element={<Home />} />
@@ -138,7 +136,7 @@ const scrollToHash = () => {
           <Route path={`/${pagesLinks.order}`} element={<PlaceOrder />} />
           <Route path={`/${pagesLinks.verify}`} element={<Verify />} />
           <Route path={`/${pagesLinks.myorders}`} element={<MyOrders />} />
-		{/*   <Route path={`/${pagesLinks.verifyOrder}/:_id`} element={<VerifyOrder />} /> */}
+		  <Route path={`/${pagesLinks.verifyOrder}/:_id`} element={<VerifyOrder />} />
 
 				<Route
 					path='/'
@@ -170,7 +168,7 @@ const scrollToHash = () => {
 						/>
 					))} */}
 				<Route
-					path={panelPath+authList.add}
+					path={authList.add}
 					element={
 						<ProtectedRoute>
 							<AddPage />
@@ -179,7 +177,7 @@ const scrollToHash = () => {
 				/>
 
 			<Route
-					path={panelPath+authList.list}
+					path={authList.list}
 					element={
 						<ProtectedRoute>
 							<ListPage />
@@ -188,10 +186,10 @@ const scrollToHash = () => {
 				/>
 
 			<Route
-					path={replacePolishLetters(panelPath+authList.orders)}
+					path={authList.orders}
 					element={
 						<ProtectedRoute>
-							<OrdersPage />
+							<ListPage />
 						</ProtectedRoute>
 					}
 				/>
@@ -205,76 +203,45 @@ const scrollToHash = () => {
 
 
 
-	{/* 			<Route
-					path={panelPath+pagesLinks.signup}
+				<Route
+					path={pagesLinks.signup}
 					element={
 						<RedirectAuthenticatedUser>
 							<SignUpPage />
 						</RedirectAuthenticatedUser>
 					}
-				/> */}
-					{[panelPath+pagesLinks.signup,pagesLinks.signup].map(path => <Route path={path} key={path}
+				/>
+				<Route
+					path={pagesLinks.login}
 					element={
 						<RedirectAuthenticatedUser>
-							<SignUpPage location={location} panelPath={panelPath} />
+							<LoginPage />
 						</RedirectAuthenticatedUser>
 					}
-				/>)}
-					{[panelPath+pagesLinks.login,pagesLinks.login].map(path => <Route path={path} key={path}
-					element={
-						<RedirectAuthenticatedUser>
-							<LoginPage location={location} panelPath={panelPath} />
-						</RedirectAuthenticatedUser>
-					}
-				/>)}
-				
-{/* 				<Route
-					path={panelPath+pagesLinks.verifyEmail}
+				/>
+				<Route
+					path={pagesLinks.verifyEmail}
 					element={<EmailVerificationPage />}
-				/> */}
-
-			{[panelPath+pagesLinks.verifyEmail,pagesLinks.verifyEmail].map(path => <Route path={path} key={path}
-					element={
-						<RedirectAuthenticatedUser>
-							<EmailVerificationPage location={location} panelPath={panelPath} />
-						</RedirectAuthenticatedUser>
-					}
-				/>)}
-{/* 				<Route
-					path={panelPath+pagesLinks.forgotPass}
+				/>
+				<Route
+					path={pagesLinks.forgotPass}
 					element={
 						<RedirectAuthenticatedUser>
 							<ForgotPasswordPage />
 						</RedirectAuthenticatedUser>
 					}
-				/> */}
+				/>
 
-{[panelPath+pagesLinks.forgotPass,pagesLinks.forgotPass].map(path => <Route path={path} key={path}
-					element={
-						<RedirectAuthenticatedUser>
-							<ForgotPasswordPage location={location} panelPath={panelPath} />
-						</RedirectAuthenticatedUser>
-					}
-				/>)}
-
-	{/* 			<Route
-					path={`${panelPath+pagesLinks.resetPass}/:token`}
+				<Route
+					path={`${pagesLinks.resetPass}/:token`}
 					element={
 						<RedirectAuthenticatedUser>
 							<ResetPasswordPage />
 						</RedirectAuthenticatedUser>
 					}
-				/> */}
-
-		{[panelPath+pagesLinks.resetPass,pagesLinks.resetPass].map(path => <Route path={path} key={path}
-					element={
-						<RedirectAuthenticatedUser>
-							<ResetPasswordPage location={location} panelPath={panelPath} />
-						</RedirectAuthenticatedUser>
-					}
-				/>)}
+				/>
 				{/* catch all routes */}
-			{/* 	<Route path='*' element={<Navigate to='/' replace />} /> */}
+				<Route path='*' element={<Navigate to='/' replace />} />
 			</Routes>
 			<Footer setShowPopupPage={setShowPopupPage}/>
 			<Toaster />

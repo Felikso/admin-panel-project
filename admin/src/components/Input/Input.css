@@ -27,6 +27,10 @@ align-items: center;
 pointer-events: none; 
 }
 
+.formBox .input{
+    margin-bottom: 1.5rem;
+}
+
 /* .icon{
     color: #10B981; 
 } */

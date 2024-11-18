@@ -15,7 +15,6 @@ import toast from 'react-hot-toast';
 import Button from '../../components/Button/Button';
 import { useNavigate } from 'react-router-dom';
 import { pagesLinks } from '../../store/authVar';
-import NetworkErrorText from '../../components/NetworkErrorText/NetworkErrorText'
 
 const PlaceOrder = () => {
 	const {
@@ -103,22 +102,18 @@ const PlaceOrder = () => {
 		//const { session_url } = response.data;
 		if (response.data.success) {
 			if(!isAuthenticated) {
-				localStorage.removeItem('cartData') //clear cartn 
+				navigate(pagesLinks.verifyOrder);
 				toast.success(
 					customInfo.unauthenticatedAccpetPlaceOrder,
 					{
 					  duration: 6000,
 					}
 				  );
-				  navigate('/')
-				  window.location.reload();
-
-				  
+	
+				//window.location.replace(session_url);
+			}else{
+				navigate(pagesLinks.order);
 			}
-			localStorage.removeItem('cartData') //clear cartn 
-			navigate('/')
-			window.location.reload();
-			//navigate(pagesLinks.orders);
 			/* if (session_url) {
 				//window.location.replace(session_url);
 			} else {

@@ -1,15 +1,3 @@
-/* import profile_image from './profile_image.png'
-import add_icon from './add_icon.png' 
-import logo from './logo.png'
-import order_icon from './order_icon.png'
-import parcel_icon from './parcel_icon.png'
-import upload_area from './upload_area.png'
-import logout_icon from './logout_icon.svg'
-import rabish_icon from './rabish_icon.svg'
- */
-
-
-
 import profile_image from './profile_image.png'
 import add_icon from './add_icon.png' 
 /* import logo from './logo.png' */
@@ -87,7 +75,7 @@ import play_store from './main_files/socials/play_store.svg'
 import logo from './main_files/logo.png'
 import basket_icon from './main_files/basket_icon.png'
 import search_icon from './main_files/search_icon.png'
-import rating_stars from './main_files/rating_stars.svg'
+import rating_stars from './main_files/rating_stars.png'
 import add_icon_white from './main_files/add_icon_white.svg'
 import add_icon_green from './main_files/add_icon_green.svg'
 import remove_icon_red from './main_files/remove_icon_red.svg'
@@ -149,14 +137,6 @@ import selector_icon from './selector_icon.png'
 export const assets = {
     
  
-    //profile_image,
-    //add_icon,
-    //logo,
-    //order_icon,
-    //parcel_icon,
-    //upload_area,
-    //logout_icon,
-    //rabish_icon,
     rabish_icon,
     refresh_icon,
     profile_image,
@@ -411,4 +391,3 @@ export const items_list = [
 
 
 ]
-

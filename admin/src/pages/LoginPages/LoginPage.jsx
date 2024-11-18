@@ -15,24 +15,29 @@ import {
 	loginPagesLinks,
 } from './loginVar.js';
 import Button from '../../components/Button/Button.jsx';
-import {CardContent} from './CardContent.jsx';
 
-const LoginPage = ({location}) => {
+const LoginPage = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const checkAdmin = false; //check if user is admin or not
 
-	const { login, isLoading, error } = useAuthStore();
+	const { login, isLoading, error, user, token } = useAuthStore();
 
 	const handleLogin = async (e) => {
 		e.preventDefault();
+		console.log('login');
+		
 		await login(email, password, checkAdmin);
+
 	};
 
 
+
+
 	return (
-		<>
-		<CardContent location={location} title={welcomeTitle}>
+		<div className='cardContent'>
+			<div className='formBox'>
+				<h2 className='title textTogradient'>{welcomeTitle}</h2>
 
 				<form onSubmit={handleLogin}>
 					
@@ -66,13 +71,14 @@ const LoginPage = ({location}) => {
 					{error && <p className='textError'>{error}</p>}
 
 					<Button
+					//type='submit'
 						text={loginBtnText}
 						animateText={loginBtnTextAnimate}
 						animate={isLoading}
 						color={'0'}
 					></Button>
 				</form>
-			
+			</div>
 			<div className='infoBox'>
 				<p className='infoText'>
 					{dontHaveAccount}
@@ -86,7 +92,7 @@ const LoginPage = ({location}) => {
 					</Link>
 				</p>
 			</div>
-		</CardContent></>
+		</div>
 	);
 };
 export default LoginPage;
