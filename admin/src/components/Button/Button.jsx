@@ -1,21 +1,12 @@
 import React from 'react'
 import './Button.css'
 
-const  Button = ({color, text='', animate, animateText, type='submit', onClick, icon, width, heigt, iconWidth, iconHeight, fc, allHeightWidth}) => {
+const  Button = ({color, text, animate, animateText}) => {
 
           let textToRender = animate ? (animateText ? animateText : text) : text;
   return (
   
-    <button 
-    onClick={onClick}
-    type={type}
-    style={{color: fc, width: width ? width : allHeightWidth, height: heigt ? heigt : allHeightWidth}}
-    className={`btnHover color-${color}`}>
-      {icon&&
-      <img 
-      src={icon}
-      style={{width: iconWidth? iconWidth : allHeightWidth, height: iconHeight ? iconHeight : allHeightWidth}}
-      />}
+    <button className={`btnHover color-${color}`}>
        <div className={animate ? "waviy" : ''}>
         
         {

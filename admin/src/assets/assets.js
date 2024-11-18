@@ -1,14 +1,3 @@
-import profile_image from './profile_image.png'
-import add_icon from './add_icon.png' 
-/* import logo from './logo.png' */
-import order_icon from './order_icon.png'
-/* import parcel_icon from './parcel_icon.png' */
-import upload_area from './upload_area.png'
-import logout_icon from './logout_icon.svg'
-import login_icon from './main_files/login.svg'
-import refresh_icon from './main_files/refresh_icon.svg'
-import rabish_icon from './main_files/rabish_icon.svg'
-
 /* category */
 
 const main_1_cat = 'pizza';
@@ -83,7 +72,7 @@ import cross_icon from './main_files/cross_icon.svg'
 
 import profile_icon from './main_files/profile_icon.png'
 import bag_icon from './main_files/bag_icon.png'
-
+import logout_icon from './main_files/logout_icon.png'
 import parcel_icon from './main_files/parcel_icon.png'
 
  
@@ -135,17 +124,15 @@ import selector_icon from './selector_icon.png'
  */
 
 export const assets = {
-    
+ /*     
  
-    rabish_icon,
-    refresh_icon,
-    profile_image,
-    add_icon,
-    logo,
-    order_icon,
-    parcel_icon,
-    upload_area,
-    login_icon,
+
+
+    selector_icon,   
+
+   
+ 
+    icon, */ 
     parcel_icon,    
     bag_icon, 
     logout_icon,  

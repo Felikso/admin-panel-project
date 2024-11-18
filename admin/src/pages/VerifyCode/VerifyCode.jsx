@@ -2,12 +2,13 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthStore } from "../../store/authStore";
 import toast from "react-hot-toast";
-import { emailVeryData } from './loginVar.js'
-import Button from "../../components/Button/Button";
-import { customInfo } from "./loginVar.js";
+import { emailVeryData } from '../../utils/variables'
+/* import Button from "../../components/Button/Button"; */
+import './VerifyCode.css'
+
 import './LoginPages.css'
 
-const EmailVerificationPage = () => {
+const VerifyCode = () => {
 	const [code, setCode] = useState(["", "", "", "", "", ""]);
 	const inputRefs = useRef([]);
 	const navigate = useNavigate();
@@ -52,7 +53,7 @@ const EmailVerificationPage = () => {
 		try {
 			await verifyEmail(verificationCode);
 			navigate("/");
-			toast.success(customInfo.emailVerified);
+			toast.success("Email verified successfully");
 		} catch (error) {
 			console.log(error);
 		}
@@ -97,4 +98,4 @@ const EmailVerificationPage = () => {
 		</div>
 	);
 };
-export default EmailVerificationPage;
+export default VerifyCode;

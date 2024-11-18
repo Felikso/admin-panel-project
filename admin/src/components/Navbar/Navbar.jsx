@@ -12,15 +12,21 @@ import {
 import { Link, useNavigate } from 'react-router-dom';
 import { StoreContext } from '../../context/StoreContext.jsx';
 
+import { useAuthStore } from '../../store/authStore.js'
+
 const Navbar = ({ setShowLogin }) => {
 	const [menu, setMenu] = useState('start');
 
 	const { getTotalCartAmount,token,setToken,userName } = useContext(StoreContext);
 
-	const navigate = useNavigate();
 
+    const { user, logout, checkAdmin } = useAuthStore();
+
+	const navigate = useNavigate();
+console.log(user)
 	const userLogout = () => {
-		localStorage.removeItem('token')
+/* 		localStorage.removeItem('token')
+		localStorage.removeItem('userName') */
 		localStorage.removeItem('cartData') //clear cart
 		setToken('');
 		navigate('/')
@@ -72,7 +78,7 @@ const Navbar = ({ setShowLogin }) => {
 				</button> : 
 				<div className="navProfile">
 					<img src={assets.profile_icon} alt='' />
-					<p>{userName}</p>
+					<p>{user?.name}</p>
 					<ul className="navProfileDropdown">
 						<li onClick={()=>navigate(pagesLinks.myorders)}><img src={assets.bag_icon} alt={orders} />{orders}</li>
 						<hr />

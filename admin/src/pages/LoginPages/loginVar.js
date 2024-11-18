@@ -19,7 +19,7 @@ export const loginPagesLinks = {
 
 
 /* 
-export const url = 'https://admin-panel-project-2zrh.onrender.com'
+export const url = 'https://admin-panel-project-w7s5.onrender.com'
 export const itemsUrl = '/api/items/list'
 export const imgUrl = '/images/'
 export const addCartUrl = '/api/cart/add'

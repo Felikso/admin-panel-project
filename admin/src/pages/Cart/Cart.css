@@ -1,6 +1,5 @@
 .cart{
     margin-top: 100px;
-
 }
 
 .cartItemsTitle{
@@ -9,36 +8,25 @@
     align-items: center;
     color: var(--third-color);
     font-size: max(1vw,12px);
-
 }
 
 .cartItemsItem{
     margin: 10px 0;
     color: black;
-    border-bottom: 3px solid var( --body-color);
-    min-height: 80px;
 }
 
 .cartItemsItem img{
     width: 50px;
-    min-height: 50px;
 }
 
 .cart hr{
-    height: 3px;
-    background-color: var( --body-color);
+    height: 1px;
+    background-color: var(--second-color);
     border: none;
 }
 
 .cartItemsItem .cross{
     cursor: pointer;
-    background: var(--light-icon-bg);
-    border-radius: 50%;
-    transition: 1s ease;
-}
-
-.cartItemsItem .cross:hover{
-    background: var(--red-icon-bg);
 }
 
 .cartBottom{
@@ -67,7 +55,7 @@
 
 .cartTotal button{
     border: none;
-    color: var(--second-fc-light);
+    color: var(--third-color);
     background-color: var(--second-color);
     width: max(15vw,200px);
     padding: 12px 0;
@@ -87,17 +75,15 @@
     margin-top: 10px;
     display: flex;
     justify-content: space-between;
-
+    background-color: var(--third-color);
     border-radius: 4px;
-/*     width: auto; */
 }
 
 .cartPromocodeInput input{
-    background-color: var(--third-color);
+    background: transparent;
     border: none;
     outline: none;
-    padding: 10px;
-    text-align: center;
+    padding-left: 10px;
 }
 
 .cartPromocodeInput button{

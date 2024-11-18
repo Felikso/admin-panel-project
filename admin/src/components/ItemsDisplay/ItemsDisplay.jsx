@@ -1,25 +1,19 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import './ItemsDisplay.css'
 import { StoreContext } from '../../context/StoreContext'
 import Item from '../Item/Item'
 
-import { allCategoriesName, customErrors, customInfo, itemsMainData } from '../../utils/variables.jsx'
-import { useParams } from 'react-router-dom'
-import { useAuthStore } from '../../store/authStore'
-import BackgroundAnimation from '../BackgroundAnimation/BackgroundAnimation'
-import NetworkErrorText from '../NetworkErrorText/NetworkErrorText.jsx'
+import { allCategoriesName } from '../../utils/variables'
 
 const ItemsDisplay = ({category}) => {
 
-  
-    const {items_list, dataLoading, netErr} = useContext(StoreContext)
+    const {items_list} = useContext(StoreContext)
 
   return (
-    <div className='itemsDisplay' id='itemsDisplay'>
-        {netErr &&<NetworkErrorText />}
+    <div className='ItemsDisplay' id='ItemsDisplay'>
+        <h2>wybierz swoje itemy.</h2>
         <div className="itemsDisplayList">
-          {dataLoading ? <BackgroundAnimation /> :
-            items_list &&
+            {items_list &&
                 items_list.map((item,i) => {
                     if(category===allCategoriesName || category===item.category){
                     return <Item key={i} item={item} />

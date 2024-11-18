@@ -6,9 +6,6 @@ export const pagesLinks = {
     forgotPass: '/forgot-password',
     resetPass: '/reset-password',
     verifyEmail: '/verify-email',
-    verifyRabat: '/verify',
-    verifyOrder: '/weryfikacja-zamowienia',
-    order: '/zamowienia'
 }
 
 export const customErrors = {
@@ -19,6 +16,5 @@ export const customErrors = {
     resetPass: 'wystąpił problem przy resetowaniu hasła',
     remindPassMail: 'wystąpił problem przy wysyłaniu e-maila',
     invalidCredentials: 'nieprawidłowe dane',
-    verifyOrder: 'błąd poczas weryfikacji zamówienia',
-    verifyRabat: 'błąd poczas weryfikacji rabatu'
+    verifyOrder: 'błąd poczas weryfikacji zamówienia'
 }

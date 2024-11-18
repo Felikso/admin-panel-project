@@ -10,17 +10,13 @@ const Item = ({ item }) => {
 	/*     const [itemCount,setItemCount] = useState(0) */
 	const { cartItems, addToCart, removeFromCart, url } = useContext(StoreContext);
 
-	const handleAddItem = () =>{
-		console.log()
-	}
-
 	useEffect(()=>{
 		
-			if(Object.keys(cartItems).length === 0){
+/* 			if(Object.keys(cartItems).length === 0){
 
 			}else{
 				localStorage.setItem('cartData',JSON.stringify(cartItems))
-			}
+			} */
 
 
 	},[cartItems])
@@ -32,7 +28,7 @@ const Item = ({ item }) => {
 				{!cartItems[_id] ? ( /* !cartItems[_id] with that was error */
 					<img
 						className='add'
-						onClick={() => {addToCart(_id), console.log(_id);}}
+						onClick={() => addToCart(_id)}
 						src={assets.add_icon_white}
 						alt=''
 					/>
@@ -45,7 +41,7 @@ const Item = ({ item }) => {
 						/>
 						<p>{cartItems[_id]}</p>
 						<img
-							onClick={() => {addToCart(_id), console.log(_id);}}
+							onClick={() => addToCart(_id)}
 							src={assets.add_icon_green}
 							alt='dodaj'
 						/>

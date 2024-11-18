@@ -7,7 +7,7 @@ import axios from 'axios'
 
 const LoginPopup = ({setShowLogin}) => {
 
-    const {url,setToken, cartItems} = useContext(StoreContext)
+    const {url,setToken,setUserName,cartItems} = useContext(StoreContext)
 
     const [currState,setCurrState] = useState(formData.loginState)
     const [data,setData] = useState({
@@ -32,17 +32,31 @@ const LoginPopup = ({setShowLogin}) => {
         }
 
         const response = await axios.post(newUrl,data);
-        console.log(response);
-        console.log(document.cookie)
         if(response.data.success){
-            setToken(response.data.user.token)
+            setToken(response.data.token)
+            localStorage.setItem('token',response.data.token)
+            setUserName(response.data.userName)
+            localStorage.setItem('userName',response.data.userName)
+            //let token = response.data.token;
 
-            axios.post(url+addCartUrl,{itemId},{headers:{token}}) 
+    /*         {Object.entries(cartItems).map(([item, i]) => {
+                let count = 0;
+                do {
+                console.log(`This is loop iteration number ${item}`);
+                axios.post(url+addCartUrl,{item},{headers:{token}})
+                count++;
+                } while (count < cartItems[item]);
+            })
+            } */
+            //axios.post(url+addCartUrl,{itemId},{headers:{token}}) 
 
 
 
             setShowLogin(false)
- 
+            //check if is admin
+            if(response.data.isAdmin){
+                alert('czesc adminie :)')
+            }
         }else{
             alert(response.data.message)
         }

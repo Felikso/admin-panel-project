@@ -1,16 +1,12 @@
 import { createContext, useEffect, useState } from 'react';
 import { items_list } from '../assets/assets';
-import { url, itemsUrl, imgUrl, addCartUrl, removeFromCartUrl, getFromCartUrl, orderVerifyUrl, myOrdersUrl, customInfo, customErrors } from '../utils/variables'
+import { url, itemsUrl, imgUrl, addCartUrl, removeFromCartUrl, getFromCartUrl, orderVerifyUrl, myOrdersUrl } from '../utils/variables'
 import axios from 'axios';
-import { useAuthStore } from '../store/authStore';
-import toast from 'react-hot-toast';
-
 
 export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
-
-	const { user, isAuthenticated } = useAuthStore();
+	//const [cartItems, setCartItems] = useState({});
 
 	const [cartItems, setCartItems] = useState(() => {
 		let obj = {};
@@ -19,15 +15,14 @@ const StoreContextProvider = (props) => {
 		}
 		return obj;
 	  });
-
-	  const [dataLoading,setDataLoading] = useState(isAuthenticated) //if dosent auth, default load items, else wait for user cart for render
-	  
 	
 	  // Update localStorage whenever the state changes
 	  useEffect(() => {
 		localStorage.setItem('cartData', JSON.stringify(cartItems));
-
+		//let itemId = '6728fa0733263301f953d82a'
+		// axios.post(url+addCartUrl,{itemId},{headers:{token}}) 
 	  }, [cartItems]);
+
 
 
 	const [token,setToken] = useState('');
@@ -36,27 +31,22 @@ const StoreContextProvider = (props) => {
 
 	const [items_list,setItemsList] = useState([]);
 
-	const [netErr, setNetErr] = useState(false)
-
-	const addToCart = async (itemId, userId) => {
-		
+	const addToCart = async (itemId) => {
 		if (!cartItems[itemId]) {
 			setCartItems((prev) => ({ ...prev, [itemId]: 1 }));
 		} else {
 			setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
 		}
 		if(token){
-			await axios.post(url+addCartUrl,{itemId,userId},{headers:{token}}) 
-			toast.success(customInfo.itemAdded);
+			await axios.post(url+addCartUrl,{itemId},{headers:{token}}) 
 		}
 		
 	};
 
-	const removeFromCart = async (itemId,userId) => {
+	const removeFromCart = async (itemId) => {
 		setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
 		if(token){
-			await axios.post(url+removeFromCartUrl,{itemId,userId},{headers:{token}})
-			toast.error(customInfo.itemRemoved);
+			await axios.post(url+removeFromCartUrl,{itemId},{headers:{token}})
 		}
 	};
 
@@ -81,63 +71,45 @@ const StoreContextProvider = (props) => {
 
 	const loadCartData = async (token) => {
 		const response = await axios.post(url+getFromCartUrl,{},{headers:{token}})
-
+		//console.log(response.data)
 
 		if(response.data.success){
 			setCartItems(response.data.cartData);
-			console.log(response.data)
-			setDataLoading(!response.data.success)
 		}
 
 
 	}
 
-	if(!isAuthenticated){
-		console.log('cleaning time');
-		localStorage.removeItem('token')
-		//localStorage.removeItem('cartData') //clear cart
-		//setDataLoading(!dataLoading)
-	}
-
-
-/* 	if (localStorage.getItem('token') !== null) {
-	
-	} else {
-		console.log('pierwszy render');
-		console.log(user);
-		
-		if(user){
-			localStorage.setItem('token',user.token)
-			console.log(user);
-			
-		}	
-	} */
 	useEffect(()=>{
+		//localStorage.setItem('cartData',(localStorage.getItem('cartData')))
+/* 		if(localStorage.getItem('cartData')){
+			const mergedObj = Object.assign({}, cartItems, localStorage.getItem('cartData'));
+			setCartItems(mergedObj);
+		} */
+		//setCartItems(JSON.stringify(localStorage.getItem('cartData')))
 		async function loadData() {
-			try {
-				if(user){
-					localStorage.setItem('token',user.token)
-				}
-				await fetchItemsList();
-	
-	
-				if(localStorage.getItem('token')){
-					
-					setToken(localStorage.getItem('token'));
-	
-	
-					await loadCartData(localStorage.getItem('token'));
-				}
-			} catch (error) {
-				toast.success(customInfo.tryRefresh)
-				toast.error(customErrors.network)
-				setNetErr(true)
-			}
+/* 			await fetchItemsList();
+			if(localStorage.getItem('token')){
+				setToken(localStorage.getItem('token'));
+				setUserName(localStorage.getItem('userName'));
+				
 			
+
+				await loadCartData(localStorage.getItem('token'));
+			} */
 		}
 		loadData()
-	},[user])
+	},[])
 
+
+
+
+
+/* 	items_list.forEach(item=>{
+		delete item._id
+		item.image = item.image.replace('/src/assets/', '')
+	})
+	console.log(JSON.stringify(items_list)) */
 	const deliveryPrice = getTotalCartAmount()===0?0:8;
 
 	const contextValue = {
@@ -155,9 +127,7 @@ const StoreContextProvider = (props) => {
 		orderVerifyUrl,
 		myOrdersUrl,
 		userName,
-		setUserName,
-		dataLoading,
-		netErr
+		setUserName
 	};
 	return (
 		<StoreContext.Provider value={contextValue}>
