@@ -2,17 +2,17 @@ import { create } from "zustand";
 import axios from "axios";
 import { pagesLinks, customErrors } from './authVar.js';
 
-const API_URL = import.meta.env.MODE === "development" ? "http://localhost:4000/api/auth" : "/api/auth";
+const API_URL = import.meta.env.MODE === "development" ? "https://admin-panel-project-w7s5.onrender.com/api/auth" : "/api/auth";
 
-const API_ITEMS_URL = import.meta.env.MODE === "development" ? "http://localhost:4000/api/items" : "/api/items";
+const API_ITEMS_URL = import.meta.env.MODE === "development" ? "https://admin-panel-project-w7s5.onrender.com/api/items" : "/api/items";
 
-const API_USERS_URL = import.meta.env.MODE === "development" ? "http://localhost:4000/api/user" : "/api/user";
+const API_USERS_URL = import.meta.env.MODE === "development" ? "https://admin-panel-project-w7s5.onrender.com/api/user" : "/api/user";
 
-const API_RABAT_URL = import.meta.env.MODE === "development" ? "http://localhost:4000/api/rabat" : "/api/rabat";
+const API_RABAT_URL = import.meta.env.MODE === "development" ? "https://admin-panel-project-w7s5.onrender.com/api/rabat" : "/api/rabat";
 
-const API_ORDER_URL = import.meta.env.MODE === "development" ? "http://localhost:4000/api/order" : "/api/order";
+const API_ORDER_URL = import.meta.env.MODE === "development" ? "https://admin-panel-project-w7s5.onrender.com/api/order" : "/api/order";
 
-const API_CART_URL = import.meta.env.MODE === "development" ? "http://localhost:4000/api/cart" : "/api/cart";
+const API_CART_URL = import.meta.env.MODE === "development" ? "https://admin-panel-project-w7s5.onrender.com/api/cart" : "/api/cart";
 
 
 axios.defaults.withCredentials = true;
