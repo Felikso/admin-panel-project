@@ -36,7 +36,7 @@ const Navbar = () => {
 			localStorage.removeItem('cartData') //clear cart
 			setOpenMenu(!openMenu)
 			navigate('/')
-			window.location.reload();
+			//window.location.reload();
 		
 		}
 

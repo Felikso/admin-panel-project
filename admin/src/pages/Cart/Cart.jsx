@@ -52,7 +52,7 @@ function Cart() {
 							setRabat(0)
 						}
 						toast.success('kod rabatowy zaakceptowany')
-						window.location.reload();
+						//window.location.reload();
 					 }else{
 						toast.error('podany nieprawidłowy kod rabatowy')
 					 }
