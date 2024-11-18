@@ -42,7 +42,7 @@ const ProtectedRoute = ({ children }) => {
 	const { isAuthenticated, user } = useAuthStore();
 
 	if(user){
-		if (!user.isAdmin) {
+		if (!user?.isAdmin) {
 			return <Navigate to='/not-admin' replace />;
 		}
 		
@@ -51,7 +51,7 @@ const ProtectedRoute = ({ children }) => {
 		return <Navigate to={`${pagesLinks.login}`} replace />;
 	}
 
-	if (!user.isVerified) {
+	if (!user?.isVerified) {
 		return <Navigate to={`${pagesLinks.verifyEmail}`} replace />;
 	}
 
@@ -78,7 +78,7 @@ const ProtectedRoute = ({ children }) => {
 const RedirectAuthenticatedUser = ({ children }) => {
 	const { isAuthenticated, user } = useAuthStore();
 
-	if (isAuthenticated && user.isVerified) {
+	if (isAuthenticated && user?.isVerified) {
 		return <Navigate to='/' replace />;
 	}
 
