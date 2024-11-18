@@ -62,7 +62,6 @@ const RedirectAuthenticatedUser = ({ children }) => {
 	return children;
 };
 /*login*/
-console.log(isAuthenticated);
 
   return (
     <>
