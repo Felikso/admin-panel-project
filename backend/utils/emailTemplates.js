@@ -1,28 +1,36 @@
 export const VERIFICATION_EMAIL_TEMPLATE = `
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="./vd.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Verify Your Email</title>
+  <title>Weryfikacja zamówienia</title>
 </head>
 <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
-  <div style="background: linear-gradient(to right, #4CAF50, #45a049); padding: 20px; text-align: center;">
-    <h1 style="color: white; margin: 0;">Verify Your Email</h1>
+  <div style="background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgb(148, 118, 37) 50%, rgb(0, 0, 0) 100%); padding: 20px; text-align: center; border-top-right-radius: 50px; border-top-left-radius: 50px;">
+    <h1 style="color: white; margin: 0;">Zweryfikuj swoje zamówienie</h1>
   </div>
-  <div style="background-color: #f9f9f9; padding: 20px; border-radius: 0 0 5px 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-    <p>Hello,</p>
-    <p>Thank you for signing up! Your verification code is:</p>
+  <div style="background-color: rgba(228, 198, 99, 0.555); padding: 20px; border-radius: 0 0 5px 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);     border-bottom-right-radius: 50px; border-bottom-left-radius: 50px;">
+    <p>Cześć,</p>
+    <p>Udało Ci się pomyślnie złożyć zamówienie. ;) Potwierdź je wpisując kod z obrazka pod wskazany link:</p>
     <div style="text-align: center; margin: 30px 0;">
-      <span style="font-size: 32px; font-weight: bold; letter-spacing: 5px; color: #4CAF50;">{verificationCode}</span>
+      <span style="font-size: 32px; font-weight: bold; letter-spacing: 5px; color: rgb(148, 118, 37);">{verificationCode}</span>
     </div>
-    <p>Enter this code on the verification page to complete your registration.</p>
-    <p>This code will expire in 15 minutes for security reasons.</p>
-    <p>If you didn't create an account with us, please ignore this email.</p>
-    <p>Best regards,<br>Your App Team</p>
+    <div  style="display: flex; flex-direction: column; gap: 20px;">
+    <div style="text-align: center; align-self: flex-start; display: grid">
+    <a href='https://admin-panel-project-2zrh.onrender.com/zamowienia' style=" font-weight: bold; background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgb(148, 118, 37) 50%, rgb(0, 0, 0) 100%); text-decoration: none;
+    color: white;
+    padding: 20px;
+    border-radius: 30px; :hover {background: yellow}">Potwierdzam zamówienie.</a>
+    <p>Kod za godzinę wygaśnie!</p>
+    <p>Pozdrowienia - Ventus Dev</p>
+  </div>
+  <img src="./logoVentusDev.svg" style="align-self: flex-end; min-width: 120px; width: 50%; height: 100%;" width="120" height="40"/>
+</div>
   </div>
   <div style="text-align: center; margin-top: 20px; color: #888; font-size: 0.8em;">
-    <p>This is an automated message, please do not reply to this email.</p>
+    <p>To wiadomość automatyczna. Proszę na nią nie odpowiadać.</p>
   </div>
 </body>
 </html>
