@@ -2,13 +2,13 @@ import { create } from "zustand";
 import axios from "axios";
 import { pagesLinks, customErrors } from './authVar.js';
 
-const API_URL = import.meta.env.MODE === "development" ? "http://localhost:4000/api/auth" : "/api/auth";
+const API_URL = import.meta.env.MODE === "development" ? "https://admin-panel-project-2zrh.onrender.com/api/auth" : "/api/auth";
 
-const API_ITEMS_URL = import.meta.env.MODE === "development" ? "http://localhost:4000/api/items" : "/api/items";
+const API_ITEMS_URL = import.meta.env.MODE === "development" ? "https://admin-panel-project-2zrh.onrender.com/api/items" : "/api/items";
 
-const API_RABAT_URL = import.meta.env.MODE === "development" ? "http://localhost:4000/api/rabat" : "/api/rabat";
+const API_RABAT_URL = import.meta.env.MODE === "development" ? "https://admin-panel-project-2zrh.onrender.com/api/rabat" : "/api/rabat";
 
-const API_ORDER_URL = import.meta.env.MODE === "development" ? "http://localhost:4000/api/order" : "/api/order";
+const API_ORDER_URL = import.meta.env.MODE === "development" ? "https://admin-panel-project-2zrh.onrender.com/api/order" : "/api/order";
 
 axios.defaults.withCredentials = true;
 
@@ -154,7 +154,7 @@ export const useAuthStore = create((set) => ({
 		try {
 
 			let activity = itemId?'update':'add';
-			const response = await axios.post(`http://localhost:4000/api/cart/add`,{itemId,userId});
+			const response = await axios.post(`https://admin-panel-project-2zrh.onrender.com/api/cart/add`,{itemId,userId});
 			//const response = await axios.post(`${url}${newUrl}`, formData);
 			set({ message: response.data.message });
 			return response

@@ -71,7 +71,7 @@ export const customInfo = {
 
 
 
-export const url = 'http://localhost:4000';
+export const url = 'https://admin-panel-project-2zrh.onrender.com';
 export const urlAdd = '/api/items/add';
 export const urlEdit = '/api/items/update';
 export const urlList = '/api/items/list';

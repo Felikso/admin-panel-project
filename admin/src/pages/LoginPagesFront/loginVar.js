@@ -19,7 +19,7 @@ export const loginPagesLinks = {
 
 
 /* 
-export const url = 'http://localhost:4000'
+export const url = 'https://admin-panel-project-2zrh.onrender.com'
 export const itemsUrl = '/api/items/list'
 export const imgUrl = '/images/'
 export const addCartUrl = '/api/cart/add'
