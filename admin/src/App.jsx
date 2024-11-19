@@ -47,7 +47,7 @@ import { replacePolishLetters } from './utils/functions.js'
 //public
 
 // protect routes that require authentication
-const ProtectedRoute = ({ children }) => {
+/* const ProtectedRoute = ({ children }) => {
 	const { isAuthenticated, user } = useAuthStore();
 
 	if(user){
@@ -64,22 +64,12 @@ const ProtectedRoute = ({ children }) => {
 		return <Navigate to={`${pagesLinks.verifyEmail}`} replace />;
 	}
 
-/* 	if (!user.isAdmin) {
-		return <Navigate to={`${pagesLinks.login}`} replace />;
-	} */
-
-
-
-/* 	if (isAuthenticated) {
-		return <AdminNavbar />;
-	} */
-
 	return (
 		<>
-{/* 		<AdminNavbar /> */}
+		<AdminNavbar />
 		{children}
 		</>);
-};
+}; */
 
 
 // redirect authenticated users to the home page
@@ -96,53 +86,15 @@ const RedirectAuthenticatedUser = ({ children }) => {
 
 function App() {
 	const { isCheckingAuth, checkAuth } = useAuthStore();
+	useEffect(() => {
+		checkAuth();
+	}, []);
 
 	useEffect(() => {
 		checkAuth();
-		console.log(checkAuth())
-		if(checkAuth()){
-			console.log('lel')
-		}else{
-			console.log('xd');
-			
-		}
 	}, [checkAuth]);
 
 	if (isCheckingAuth) return <LoadSpinner />;
-
-	/* fetch('http://localhost:4000/api/items/list', {
-		credentials: 'include'
-	  })
-		.then(response => response.json())
-		.then(data => console.log(data))
-		.catch(error => console.error('Error:', error));
- */
-/* 	const [cartItems, setCartItems] = useState(() => {
-		let obj = {};
-		if(localStorage.getItem('cartData')!=='undefined'){
-			obj = localStorage.getItem('cartData') ? JSON.parse(localStorage.getItem('cartData')) : {};
-		}
-		return obj;
-	  });
-
-	  let obj = {}; */
-	  let obj = {};
-	  if(localStorage.getItem('cartData')!=='undefined'){
-		  obj = localStorage.getItem('cartData') ? JSON.parse(localStorage.getItem('cartData')) : {};
-	  }
-
-	  const { cartItems } = useAuthStore((state) => ({
-		cartItems: state.cartItems,
-	  }));
-
-	 // 
-	  
-
-
-	
-
-
-	//if (isCheckingAuth) return <AdminNavbar />;
 
 	return (
 		<div className='background'>
@@ -188,7 +140,7 @@ function App() {
 					}
 						/>
 					))} */}
-				<Route
+				{/* <Route
 					path={replacePolishLetters(authList.add)}
 					element={
 						<ProtectedRoute>
@@ -214,14 +166,7 @@ function App() {
 						</ProtectedRoute>
 					}
 				/>
-
-
-
-
-
-
-
-
+ */}
 
 
 				<Route
