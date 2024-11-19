@@ -17,7 +17,7 @@ import { useAuthStore } from '@/store/authStore.js';
 
 const MyOrders = () => {
 
-	const { isAuthenticated, error, isLoading, beUrl, netErr } = useAuthStore();
+	const { isAuthenticated, error, isLoading, beUrl, netErr, user } = useAuthStore();
 
 	const [data, setData] = useState([]);
 	const [codeId, setCodeId] = useState(['', '', '', '', '', '']);
@@ -25,8 +25,10 @@ const MyOrders = () => {
 	const fetchOrders = async () => {
 		const response = await axios.post(
 			beUrl + userOrdersUrl,
-			{ codeId: codeId.join("") },
-		/* 	{ headers: { token } } */
+			{ codeId: codeId.join(""),
+				userId: userOrdersUrl._id
+			 },
+	/* 		{ headers: { token } } */
 		);
 
 		setData(response.data.data);
