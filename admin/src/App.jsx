@@ -85,6 +85,7 @@ const ProtectedRoute = ({ children }) => {
 // redirect authenticated users to the home page
 const RedirectAuthenticatedUser = ({ children }) => {
 	const { isAuthenticated, user } = useAuthStore();
+	
 
 	if (isAuthenticated && user.isVerified) {
 		return <Navigate to='/' replace />;
@@ -95,6 +96,19 @@ const RedirectAuthenticatedUser = ({ children }) => {
 
 function App() {
 	const { isCheckingAuth, checkAuth } = useAuthStore();
+
+	useEffect(() => {
+		checkAuth();
+		console.log(checkAuth())
+		if(checkAuth()){
+			console.log('lel')
+		}else{
+			console.log('xd');
+			
+		}
+	}, [checkAuth]);
+
+	if (isCheckingAuth) return <LoadSpinner />;
 
 	/* fetch('http://localhost:4000/api/items/list', {
 		credentials: 'include'
@@ -127,20 +141,7 @@ function App() {
 
 	
 
-	useEffect(() => {
-		checkAuth();
-		console.log(checkAuth())
-		if(checkAuth()){
-			console.log('lel')
-		}else{
-			console.log('xd');
-			
-		}
-		console.log('sprawdzam')
-		//setCartItems(obj);
-	}, [checkAuth]);
 
-	if (isCheckingAuth) return <LoadSpinner />;
 	//if (isCheckingAuth) return <AdminNavbar />;
 
 	return (
