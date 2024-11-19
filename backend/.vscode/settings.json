@@ -1,0 +1,11 @@
+{
+    "prettier.jsxSingleQuote": true,
+    "prettier.useTabs": true,
+        "workbench.colorTheme": "Default Dark+",
+        "workbench.colorCustomizations": {
+          "titleBar.activeForeground": "#000",
+          "titleBar.inactiveForeground": "#000000CC",
+          "titleBar.activeBackground": "#002373",
+          "titleBar.inactiveBackground": "#002373",
+        }
+}

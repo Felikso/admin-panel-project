@@ -1,0 +1,318 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&family=Outfit:wght@100..900&display=swap');
+
+:root {
+  --body-color: #fcfcfc;
+  --main-color: rgb(0, 0, 0);
+  --l: 50%;
+
+  --main-fc: #1b1b1b;
+  --main-bg: rgba(222, 222, 222, 0.69);
+
+  --second-fc: rgb(194, 164, 68);
+  --second-bg: var(--main-fc);
+
+  --main-content-bg: rgb(175 157 98 / 69%);
+  --seond-content-bg: rgb(161, 142, 77);
+
+  --second-bg-light: rgba(252, 218, 109, 0.685);
+  --second-fc-light: #ffffff;
+
+  --dark-bg: #252525;
+  --third-fc-light: #ff3a3a;
+
+
+
+/*   --color-primary: hsl(var(--main-fc),var(--l));
+  --second-fc: rgb(255, 166, 0);
+  --color-primary-lighter: hsl(var(--main-fc),calc(var(--l) + 10%));
+  --color-primary-lightest: hsl(var(--main-fc),calc(var(--l) + 30%)); */
+
+  --third-color: rgb(83, 64, 25);
+  --fourth-color: #101010;
+
+/*   --main-gradient: radial-gradient(circle, rgba(255,78,0,1) 0%, rgba(122,35,5,1) 60%, rgba(102,0,0,1) 100%); */
+--main-gradient: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgb(148, 118, 37) 50%, rgb(0, 0, 0) 100%);
+  --background-griadent: rgb(228, 198, 99);
+
+  --animation-link-color: rgb(100, 100, 100);
+  --animation-link-color-hover: var(--second-fc);
+
+  --btn-color: white;
+  --btn-hover: rgba(45, 0, 67, 0.637); /* btn shadow */
+
+  --icon-color: var(--second-fc);
+
+    /* NavBar*/
+
+  --min-nav-link-width: 150px;
+  --nav-height: 80px;
+  --nav-border-height: 5px;
+  --nav-color: var(--second-fc);
+  --nav-bg: var(--body-color);
+
+  --footer-color: var(--second-fc);
+  --footer-bg: var(--body-color);
+
+  --red-icon-bg: rgb(187, 60, 60);
+  --light-icon-bg: rgb(210, 210, 210); 
+
+  --table-bg: hsla(0, 0%, 100%, 0.5);
+  --table-second-bg: rgba(190, 190, 190, 0.5);
+
+}
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Outfit;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html, body { 
+  scroll-behavior: smooth
+}
+
+body{
+  min-height: 100vh;
+  color: var(--fourth-color);
+  background: rgb(0,0,0);
+  background: var(--background-griadent);
+  padding-top: var(--nav-height);
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+hr{
+  border: none;
+  height: 1px;
+  background-color: var(--second-fc);
+}
+
+.appContent{
+  display: flex;
+}
+
+.flexCol{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+}
+
+.flexRow{
+  display: flex;
+  gap: 10px;
+}
+
+.cursor{
+  cursor: pointer;
+}
+
+.background{
+display: flex; 
+overflow: hidden; 
+position: relative; 
+justify-content: center; 
+align-items: center; 
+min-height: 100vh; 
+margin: 0 !important;
+flex-direction: column;
+
+/* background-image: linear-gradient(to bottom right); 
+background-color: #111827; 
+background-color: #064E3B;  */
+}
+
+.animatedIcons img{
+  width: 30px;
+
+  cursor: pointer;
+  transition: .5s;
+}
+
+.animatedIcons {
+  filter: invert(70%) sepia(55%) saturate(697%) hue-rotate(334deg) brightness(109%) contrast(92%);
+  transition: filter 0.5s;
+}
+.animatedIcons img:hover {
+  filter: invert(70%) sepia(55%) saturate(697%) hue-rotate(334deg) brightness(109%) contrast(92%) hue-rotate(30deg);
+}
+
+.cardContent{
+    padding: 2rem; 
+    margin-top: 2.5rem; 
+    border-radius: 0.75rem; 
+    border-width: 2px; 
+    border-color: #2c84ff; 
+    width: 100%; 
+    max-width: 28rem; 
+    background-color: var(--body-color);
+    --bg-opacity: 0.8; 
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); 
+    transition: .3s;
+    animation: fadeIn;
+}
+
+.title{
+margin-bottom: 1.5rem; 
+font-size: 1.5rem;
+line-height: 2.25rem; 
+font-weight: 700; 
+text-align: center; 
+}
+
+.textTogradient{
+color: transparent; 
+background-clip: text; 
+background-image: var(--main-gradient);
+background-color: #000000; 
+}
+
+.linksBox{
+    display: flex; 
+margin-bottom: 1.5rem; 
+align-items: center; 
+}
+
+.infoBox{
+display: flex; 
+padding-top: 1rem;
+padding-bottom: 1rem; 
+padding-left: 2rem;
+padding-right: 2rem; 
+justify-content: center; 
+/* background-color: color-mix(in srgb, var(--main-color) 95%, black 5%); */
+--bg-opacity: 0.5; 
+
+}
+
+.infoText{
+    font-size: 0.875rem;
+line-height: 1.25rem; 
+color: var(--second-fc); 
+
+}
+
+.textError{
+    margin-bottom: 0.5rem; 
+    font-weight: 600; 
+    color: #EF4444; 
+}
+
+.textAccept{
+    margin-bottom: 0.5rem; 
+    font-weight: 600; 
+    color: #4aef44; 
+}
+
+.infoLink{
+    color: #637d74; 
+}
+
+.icon{
+    color: var(--icon-color);
+}
+
+.infoLinkcolor:hover {
+ text-decoration: underline; 
+ }
+
+ .animationLink {
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .animationLink::before,
+  .animationLink::after {
+   content: '';
+    position: absolute;
+    width: 100%;
+    left: 0;
+  }
+  .animationLink::before {
+    background-color: var(--animation-link-color-hover);
+    height: 2px;
+    bottom: 0;
+    transform-origin: 100% 50%;
+    transform: scaleX(0);
+    transition: transform .3s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+  .animationLink::after {
+    content: attr(data-replace);
+    height: 100%;
+    top: 0;
+    transform-origin: 100% 50%;
+    transform: translate3d(200%, 0, 0);
+    transition: transform .3s cubic-bezier(0.76, 0, 0.24, 1);
+    color: var(--animation-link-color-hover);
+  }
+  
+  .animationLink:hover::before {
+    transform-origin: 0% 50%;
+    transform: scaleX(1);
+  }
+  .animationLink:hover::after {
+    transform: translate3d(0, 0, 0);
+  }
+  
+  .animationLink span {
+    display: inline-block;
+    transition: transform .3s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+  
+  .animationLink:hover span {
+    transform: translate3d(-200%, 0, 0);
+  }
+  
+  
+  .animationLink {
+      text-decoration: none;
+      color: var(--animation-link-color);
+      font-weight: 700;
+      vertical-align: top;
+  }
+
+  /* https://codepen.io/team/css-tricks/pen/jOarVmy */
+
+  .formBox{
+    text-align: center;
+  }
+
+
+
+
+  /*
+  https://codepen.io/ianfarb/pen/neEWbP
+  for navlinks + background change
+
+  https://codepen.io/shshaw/pen/wWQeEB
+  hover on card another have in this time opacity
+  */
+
+
+  @keyframes fadeIn {
+    0%{
+      opacity: 0;
+    }
+    100%{
+      opacity: 100%;
+    }
+  }
+
+
+  .displayNone{
+    display: none !important;
+  }
+
+  .disabled{
+    pointer-events: none  !important;
+    border: 1px solid grey  !important;
+    background-color: lightgrey  !important;
+}
