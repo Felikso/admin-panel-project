@@ -1,4 +1,14 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
+import { useAuthStore } from './store/authStore';
+import { useEffect, useState } from 'react';
+
+//public
+import Navbar from './components/Navbar/Navbar';
+import Home from '@/pages/PublicPages/Home/Home';
+import Cart from '@/pages/PublicPages/Cart/Cart';
+import PlaceOrder from '@/pages/PublicPages/PlaceOrder/PlaceOrder';
+import MyOrders from '@/pages/PublicPages/MyOrders/MyOrders';
+import Footer from '@/components/Footer/Footer';
 
 import SignUpPage from './pages/LoginPages/SignUpPage';
 import LoginPage from './pages/LoginPages/LoginPage.jsx';
@@ -6,38 +16,34 @@ import ForgotPasswordPage from './pages/LoginPages/ForgotPasswordPage.jsx';
 import EmailVerificationPage from './pages/LoginPages/EmailVerificationPage';
 import ResetPasswordPage from './pages/LoginPages/ResetPasswordPage';
 
-import DashboardPage from './pages/AuthPages/DashboardPage';
+//import DashboardPage from './pages/AuthPages/DashboardPage';
 
 import LoadSpinner from './components/LoadSpinner/LoadSpinner.jsx';
 
 import { Toaster } from 'react-hot-toast';
-import { useAuthStore } from './store/authStore';
-import { useEffect, useState } from 'react';
+
+
 import ListPage from './pages/AuthPages/ListPage';
 import AddPage from './pages/AuthPages/AddPage.jsx';
 import OrdersPage from './pages/AuthPages/OrdersPage.jsx';
-import BackgroundAnimation from './components/BackgroundAnimation/BackgroundAnimation.jsx';
+//import BackgroundAnimation from './components/BackgroundAnimation/BackgroundAnimation.jsx';
 import AdminNavbar from './components/AdminNavbar/AdminNavbar.jsx'
 
 import { pagesLinks, authList } from './utils/variables.jsx';
 import { replacePolishLetters } from './utils/functions.js'
-import NotAdminPage from './pages/NotAdminPage.jsx';
+//import NotAdminPage from './pages/NotAdminPage.jsx';
 
 
-//public
-import Home from '@/pages/PublicPages/Home/Home';
-import Cart from '@/pages/PublicPages/Cart/Cart';
-import PlaceOrder from '@/pages/PublicPages/PlaceOrder/PlaceOrder';
-import Footer from '@/components/Footer/Footer';
+
 /* import LoginPopup from './components/LoginPopup/LoginPopup'; */
 /* import { pagesLinks, footerLinks } from './utils/variables'; */
-import PopupPage from '@/components/PopupPage/PopupPage';
-import Navbar from './components/Navbar/Navbar';
+//import PopupPage from '@/components/PopupPage/PopupPage';
+
 /* import Verify from './pages/Verify/Verify'; */
-import MyOrders from '@/pages/PublicPages/MyOrders/MyOrders';
+
 /* import VerifyOrder from './pages/VerifyOrder/VerifyOrder.jsx';
  */
-import toast from 'react-hot-toast';
+//import toast from 'react-hot-toast';
 //public
 
 // protect routes that require authentication
@@ -70,7 +76,7 @@ const ProtectedRoute = ({ children }) => {
 
 	return (
 		<>
-		<AdminNavbar />
+{/* 		<AdminNavbar /> */}
 		{children}
 		</>);
 };
@@ -88,7 +94,7 @@ const RedirectAuthenticatedUser = ({ children }) => {
 };
 
 function App() {
-	const { isCheckingAuth, checkAuth, token, setUserCartItems, setCartItems } = useAuthStore();
+	const { isCheckingAuth, checkAuth } = useAuthStore();
 
 	/* fetch('http://localhost:4000/api/items/list', {
 		credentials: 'include'
@@ -152,7 +158,7 @@ function App() {
           <Route path={`/${pagesLinks.myorders}`} element={<MyOrders />} />
 		{/*   <Route path={`/${pagesLinks.verifyOrder}/:_id`} element={<VerifyOrder />} /> */}
 		
-				<Route
+{/* 				<Route
 					path='/'
 					element={
 						<ProtectedRoute>
@@ -169,7 +175,7 @@ function App() {
 							<NotAdminPage />
 						
 					}
-				/>
+				/> */}
 
 {/* 				{Object.entries(authList).map(([item, i]) => (
 					<Route
