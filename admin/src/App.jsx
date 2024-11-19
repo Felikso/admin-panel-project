@@ -90,13 +90,13 @@ const RedirectAuthenticatedUser = ({ children }) => {
 function App() {
 	const { isCheckingAuth, checkAuth, token, setUserCartItems, setCartItems } = useAuthStore();
 
-	fetch('http://localhost:4000/api/items/list', {
+	/* fetch('http://localhost:4000/api/items/list', {
 		credentials: 'include'
 	  })
 		.then(response => response.json())
 		.then(data => console.log(data))
 		.catch(error => console.error('Error:', error));
-
+ */
 /* 	const [cartItems, setCartItems] = useState(() => {
 		let obj = {};
 		if(localStorage.getItem('cartData')!=='undefined'){

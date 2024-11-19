@@ -2,13 +2,15 @@ import { create } from "zustand";
 import axios from "axios";
 import { pagesLinks, customErrors, api } from './authVar.js';
 
-const API_URL = import.meta.env.MODE === "development" ? "http://localhost:4000/api/auth" : "/api/auth";
+const beUrl = import.meta.env.VITE_BACKEND_URL;
 
-const API_ITEMS_URL = import.meta.env.MODE === "development" ? "http://localhost:4000/api/items" : "/api/items";
+const API_URL = import.meta.env.MODE === "development" ? beUrl+"/api/auth" : "/api/auth";
 
-const API_USERS_URL = import.meta.env.MODE === "development" ? "http://localhost:4000/api/user" : "/api/user";
+const API_ITEMS_URL = import.meta.env.MODE === "development" ? beUrl+"/api/items" : "/api/items";
 
-const API_RABATS_URL = import.meta.env.MODE === "development" ? "http://localhost:4000/api/rabat" : "/api/rabat";
+const API_USERS_URL = import.meta.env.MODE === "development" ? beUrl+"/api/user" : "/api/user";
+
+const API_RABATS_URL = import.meta.env.MODE === "development" ? beUrl+"/api/rabat" : "/api/rabat";
 
 axios.defaults.withCredentials = true;
 
