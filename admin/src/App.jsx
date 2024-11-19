@@ -12,7 +12,7 @@ import LoadSpinner from './components/LoadSpinner/LoadSpinner.jsx';
 
 import { Toaster } from 'react-hot-toast';
 import { useAuthStore } from './store/authStore';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import ListPage from './pages/AuthPages/ListPage';
 import AddPage from './pages/AuthPages/AddPage.jsx';
 import OrdersPage from './pages/AuthPages/OrdersPage.jsx';
@@ -37,7 +37,7 @@ import Navbar from './components/Navbar/Navbar';
 //import MyOrders from '@/pages/PublicPages/MyOrders/MyOrders';
 /* import VerifyOrder from './pages/VerifyOrder/VerifyOrder.jsx';
  */
-
+import toast from 'react-hot-toast';
 //public
 
 // protect routes that require authentication
@@ -88,7 +88,7 @@ const RedirectAuthenticatedUser = ({ children }) => {
 };
 
 function App() {
-	const { isCheckingAuth, checkAuth } = useAuthStore();
+	const { isCheckingAuth, checkAuth, token } = useAuthStore();
 	
 
 	useEffect(() => {

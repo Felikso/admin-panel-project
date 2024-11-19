@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import axios from "axios";
-import { pagesLinks, customErrors } from './authVar.js';
+import { pagesLinks, customErrors, api } from './authVar.js';
 
 const API_URL = import.meta.env.MODE === "development" ? "http://localhost:4000/api/auth" : "/api/auth";
 
@@ -174,6 +174,109 @@ export const useAuthStore = create((set) => ({
 			throw error;
 		}
 	},
+	userCartItems: {},
+	setUserCartItems: async (cartItems,token) =>{
+		set({ userCartItems: cartItems});
+		console.log(token);
+		
+		/* try {
+			let obj = {};
+			if(localStorage.getItem('cartData')!=='undefined'){
+				obj = localStorage.getItem('cartData') ? JSON.parse(localStorage.getItem('cartData')) : {};
+			}
+			set({cartItems: obj})
+		} catch (error) {
+			set({
+				error: error.response
+			});
+			throw error;
+		} */
+	},
+	//publicPgaes
+	addToCart: async (itemId, cartItems, setCartItems, userId, token) => {
+		console.log(userId);
+		
+		if (!cartItems[itemId]) {
+			setCartItems((prev) => ({ ...prev, [itemId]: 1 }));
+		} else {
+			setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+		}
+			//await axios.post(API_ITEMS_URL+'/add',{itemId,userId} ,{ headers: { token: token } }) 
+	},
+	 removeFromCart: async  (itemId, setCartItems, userId, token) => {
+		setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
+	
+		   //await axios.post(API_ITEMS_URL+'/remove',{itemId,userId},{headers:{token}})
+		   
+
+   },
+	 addToUserCart: async (_id, cartItems) => {
+		try {
+
+			//console.log(token);
+			set({userCartItems: cartItems})
+			//const userId = user._id;
+
+	
+		/* 	if(token){
+				await axios.post(API_ITEMS_URL+api.add,{_id,userId},{headers:{token}}) 
+				//toast.success(customInfo.itemAdded);
+			} */
+		} catch (error) {
+			set({
+				error: error.response
+			});
+			throw error;
+		}
+		
+	},
+/* 	removeFromCart: async (itemId,userId) => {
+		setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
+		if(token){
+			await axios.post(url+removeFromCartUrl,{itemId,userId},{headers:{token}})
+			toast.error(customInfo.itemRemoved);
+		}
+	}, */
+	getTotalCartAmount: () => {
+		let totalAmount = 0;
+		for (const item in cartItems) {
+			if (cartItems[item] > 0) {
+				let itemInfo = items_list.find((product) => product._id === item);
+				if(itemInfo){
+					totalAmount += itemInfo.price * cartItems[item];
+				}
+
+			}
+		}
+		return totalAmount;
+	},
+	items_list: [],
+	fetchItemsList: async () => {
+		try {
+			const response = await axios.get(`${API_ITEMS_URL}/list`);
+			set({
+				items_list: response.data.data
+			});
+		} catch (error) {
+			set({
+				error: error.response.data
+			});
+			throw error;
+		}
+	},
+	loadCartData: async (token) => {
+		const response = await axios.post(url+getFromCartUrl,{},{headers:{token}})
+
+
+		if(response.data.success){
+			setCartItems(response.data.cartData);
+			console.log(response.data)
+			setDataLoading(!response.data.success)
+		}
+
+
+	}
+
 
 
 	//API_RABATS_URL

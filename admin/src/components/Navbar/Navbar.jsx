@@ -44,7 +44,7 @@ const Navbar = () => {
 
 	useEffect(() => {
 		for (let key in authList) {
-			authList[key] = '/panel'+authList[key]
+			//authList[key] = ({`/panel${authList[key]}`})
 			}
 	
 	},[]);

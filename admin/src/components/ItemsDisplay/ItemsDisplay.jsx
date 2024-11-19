@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import './ItemsDisplay.css'
 import { StoreContext } from '@/context/StoreContext'
 import Item from '../Item/Item'
@@ -8,12 +8,39 @@ import { useParams } from 'react-router-dom'
 import { useAuthStore } from '@/store/authStore'
 import BackgroundAnimation from '../BackgroundAnimation/BackgroundAnimation'
 import NetworkErrorText from '../NetworkErrorText/NetworkErrorText.jsx'
+import toast from 'react-hot-toast'
 
 const ItemsDisplay = ({category}) => {
 
+    const { fetchItemsList, items_list, user } = useAuthStore();
+
+
+    const [list,setList] = useState([]);
+
   
+    
+    const fetchList = async () => {
+      const response = await fetchItemsList();
+     // const response = await axios.get(`${url}${urlList}`);
+      if(response){
+        console.log('lista załadowana')
+      }else{
+        toast.error('errorMessage')
+      }
+    }
+
+    useEffect(()=>{
+      fetchList();
+    },[])
+    //console.log(list);
+  /*   if(items_list){
+      console.log(items_list);
+    }
+ */
+    console.log('iteemDISPLAY');
+    
     //const {items_list, dataLoading, netErr} = useContext(StoreContext)
-    let items_list = [];
+
     let dataLoading = true;
     let netErr = false
   return (

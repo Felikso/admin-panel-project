@@ -20,3 +20,4 @@ export const verifyUrl = '/weryfikacja' //remember in frontend
 export const verifyOrderUrl = '/weryfikacja-zamowienia' //remember in frontend
 export const oderSlug = 'zamowienia' //and name of new database
 export const userOrdersUrl = '/zamowienia-klienta'
+

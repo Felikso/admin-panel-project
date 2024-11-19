@@ -18,3 +18,16 @@ export const customErrors = {
     invalidCredentials: 'nieprawidłowe dane',
     verifyOrder: 'błąd poczas weryfikacji zamówienia'
 }
+
+export const api= {
+    add: '/add',
+}
+
+export const urlAdd = '/api/items/add';
+export const urlEdit = '/api/items/update';
+export const urlList = '/api/items/list';
+export const urlImg = '/images/';
+export const urlRemove = '/api/items/remove';
+export const urlUpdate = '/api/items/update';
+export const urlRemoveOrder = '/api/order/remove';
+export const errorMessage = 'Wystąpił błąd, spróbuj ponownie później. :('
