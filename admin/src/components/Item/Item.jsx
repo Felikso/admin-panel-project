@@ -6,84 +6,70 @@ import { cartData, currency, customInfo } from '@/utils/variables';
 import { useAuthStore } from '../../store/authStore';
 import { useNavigate, useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { useCartStore } from '../../store/cartStore';
 const Item = ({ item }) => {
+
+	const [itemQuantity, setItemQuantity] = useState(0)
 	const { _id, name, image, description, price } = item; //destructuring of props
 
 	/*     const [itemCount,setItemCount] = useState(0) */
-	const { setUserCartItems, user, addToCart, removeFromCart } = useAuthStore(); 
-	//console.log(user);
+	const { setUserCartItems, userCartItems, user, addToCart, removeFromCart, setCartItems } = useAuthStore(); 
+
+	const { addItemToCart, removeItemFromCart} = useCartStore();
+
+	const { cartItems } = useCartStore();
+
+	const { increaseQuantity, decreaseQuantity } = useCartStore();
+const onIncreaseQuantity = (productId) => {
+  increaseQuantity(productId);
+};
+
+const onDecreaseQuantity = () => {
+  decreaseQuantity(item._id);
+};
+
+const onRemoveItem = () => {
+	console.log(item);
 	
-	//const { /* cartItems, */ /* addToCart, */ /* removeFromCart, */ } = useContext(StoreContext);
-	//cart data
+  removeItemFromCart(item._id);
+};
 
-	const API_ITEMS_URL = import.meta.env.MODE === "development" ? "http://localhost:4000/api/items" : "/api/items";
-	const [cartItems, setCartItems] = useState(() => {
-		let obj = {};
-		if(localStorage.getItem('cartData')!=='undefined'){
-			obj = localStorage.getItem('cartData') ? JSON.parse(localStorage.getItem('cartData')) : {};
-		}
-		return obj;
-	  });
+const onAddItem = (productId) => {
 
-	  const handleCartItems = async (e) => {
-		await setUserCartItems(cartItems);
+	  addItemToCart(productId);
+  };
+  
+
+	const onAddToCart = () => {
+		addItemToCart(item);
+		
+		toast.success(`${item.name} już w koszyku!`);
+	  };
+
+	//console.log(user);
+	const handleCartItems = async (e) => {
+		await setUserCartItems(cartItems,user);
 		//await axios.post(API_ITEMS_URL+'/add',{_id,userId},{headers:{token}}) 
 	};
 
 
-/* 	  const addToCart = async (itemId, userId) => {
-		
-		if (!cartItems[itemId]) {
-			setCartItems((prev) => ({ ...prev, [itemId]: 1 }));
-		} else {
-			setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
-		}
-		toast.success(customInfo.itemAdded);
-		if(token){
-			await axios.post(API_ITEMS_URL+'/add',{itemId,userId},{headers:{token}}) 
-			
-		}
-		
-	}; */
-
-/* 	const removeFromCart = async (itemId,userId) => {
-		 setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
-		toast.error(customInfo.itemRemoved);
-		if(token){
-			await axios.post(API_ITEMS_URL+'/remove',{itemId,userId},{headers:{token}})
-			
-		}
-	}; */
-	//cart data
-
-
 	useEffect(() => {
-		handleCartItems();
-		localStorage.setItem('cartData', JSON.stringify(cartItems));
+		const iq = cartItems.filter(item => item._id === _id);
+		setItemQuantity(iq[0]?.quantity)
 
 	  }, [cartItems]);
-//console.log('iteem');
-
-/* 	useEffect(()=>{
-		
-			if(Object.keys(cartItems).length === 0){
-
-			}else{
-				localStorage.setItem('cartData',JSON.stringify(cartItems))
-			}
-
-
-	},[cartItems]) */
 
 	return (
 		<div className='item'>
 			<div className='itemImageContainer'>
 				<img src={import.meta.env.VITE_BACKEND_URL+'/images/'+image} alt={name} className='itemImage' />
-				{!cartItems[_id] ? ( /* !cartItems[_id] with that was error */
+				{!itemQuantity ? ( /* !cartItems[_id] with that was error */
 <div className='animatedIcons'>
 					<img
 						className='add'
-						onClick={() => {addToCart(_id,cartItems,setCartItems), console.log(_id);}}
+						//onClick={() => {addToCart(_id,cartItems,setCartItems), console.log(_id);}}
+						//onClick={()=>{setCartItems((prev) => ({ ...prev, [_id]: prev[_id] + 1 })),console.log(_id)}}
+						onClick={onAddToCart}
 						src={assets.add_icon_white}
 						alt=''
 					/>
@@ -91,14 +77,16 @@ const Item = ({ item }) => {
 				) : (
 					<div className='itemCounter'>
 						<img
-							onClick={() => {removeFromCart(_id,setCartItems)}}
+							//onClick={() => {removeFromCart(_id,setCartItems)}}
+							onClick={onDecreaseQuantity}
 							src={assets.remove_icon_red}
 							alt='usuń'
 						/>
-						<p>{cartItems[_id]}</p>
+						<p>{itemQuantity}</p>
 						
 						<img
-							onClick={() => {addToCart(_id,cartItems,setCartItems), console.log(_id);}}
+							//onClick={() => {addToCart(_id,cartItems,setCartItems), console.log(_id);}}
+							onClick={onAddToCart}
 							src={assets.add_icon_green}
 							alt='dodaj'
 						/>

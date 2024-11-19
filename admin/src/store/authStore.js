@@ -20,6 +20,7 @@ export const useAuthStore = create((set) => ({
 	isCheckingAuth: true,
 	message: null,
 	checkAdmin: true,
+	netErr: false,
 
 	signup: async (email, password, name) => {
 		set({ isLoading: true, error: null });
@@ -174,30 +175,24 @@ export const useAuthStore = create((set) => ({
 			throw error;
 		}
 	},
+	cartItems: {},
+	setCartItems: (cartItems)=>set({cartItems}),
 	userCartItems: {},
-	setUserCartItems: async (cartItems,token) =>{
+	setUserCartItems: async (cartItems,user,token) =>{
 		set({ userCartItems: cartItems});
-		console.log(token);
-		
-		/* try {
-			let obj = {};
-			if(localStorage.getItem('cartData')!=='undefined'){
-				obj = localStorage.getItem('cartData') ? JSON.parse(localStorage.getItem('cartData')) : {};
-			}
-			set({cartItems: obj})
-		} catch (error) {
-			set({
-				error: error.response
-			});
-			throw error;
-		} */
+		if(user){ //login
+			//console.log(user);
+			//await axios.post(API_ITEMS_URL+'/remove',{itemId,userId},{headers:{token}})
+		}
 	},
 	//publicPgaes
 	addToCart: async (itemId, cartItems, setCartItems, userId, token) => {
-		console.log(userId);
+		
 		
 		if (!cartItems[itemId]) {
-			setCartItems((prev) => ({ ...prev, [itemId]: 1 }));
+			
+			setCartItems(set((state) => ({ cartItems: state.cartItems, [itemId]: 1 })));
+			console.log(cartItems);
 		} else {
 			setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
 		}
@@ -230,20 +225,13 @@ export const useAuthStore = create((set) => ({
 		}
 		
 	},
-/* 	removeFromCart: async (itemId,userId) => {
-		setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
-		if(token){
-			await axios.post(url+removeFromCartUrl,{itemId,userId},{headers:{token}})
-			toast.error(customInfo.itemRemoved);
-		}
-	}, */
-	getTotalCartAmount: () => {
+	getTotalCartAmount: (userCartItems) => {
 		let totalAmount = 0;
-		for (const item in cartItems) {
-			if (cartItems[item] > 0) {
+		for (const item in userCartItems) {
+			if (userCartItems[item] > 0) {
 				let itemInfo = items_list.find((product) => product._id === item);
 				if(itemInfo){
-					totalAmount += itemInfo.price * cartItems[item];
+					totalAmount += itemInfo.price * userCartItems[item];
 				}
 
 			}
@@ -259,7 +247,8 @@ export const useAuthStore = create((set) => ({
 			});
 		} catch (error) {
 			set({
-				error: error.response.data
+				error: error.response.data,
+				netErr: true
 			});
 			throw error;
 		}

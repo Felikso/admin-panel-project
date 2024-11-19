@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import './Cart.css';
 import { StoreContext } from '@/context/StoreContext';
-import { cartData, cartItemsData, currency, pagesLinks, customErrors, customInfo } from '@/utils/variables';
+import { cartData, cartItemsData, currency, pagesLinks, customErrors, customInfo, imgUrl } from '@/utils/variables';
 import { useNavigate } from 'react-router-dom';
 
 import Button from '@/components/Button/Button'
@@ -15,13 +15,12 @@ import { useAuthStore } from '@/store/authStore';
 function Cart() {
 	const { items, name, price, quantity, total, remove } = cartItemsData;
 
-	const { verifyRabatCode, user } = useAuthStore();
-
+	const { verifyRabatCode, user, userCartItems, items_list, removeFromCart, getTotalCartAmount, netErr } = useAuthStore();
+	const deliveryPrice = getTotalCartAmount(userCartItems)===0?0:8;
 	const navigate = useNavigate();
 	
 
-	const { cartItems, items_list, removeFromCart, getTotalCartAmount, deliveryPrice, url, imgUrl,  dataLoading, netErr } =
-		useContext(StoreContext);
+
 
 		const [data, setData] = useState('');
 		const [rabat, setRabat] = useState(user?.rabat?.rabatValue ? user?.rabat?.rabatValue : 0)
@@ -85,15 +84,15 @@ function Cart() {
 				<br />
 				<hr />
 				{items_list.map((item, i) => {
-					if (cartItems[item._id] > 0) {
+					if (userCartItems[item._id] > 0) {
 						return (
 							
 								<div key={i} className='cartItemsTitle cartItemsItem'>
-									<img src={url+imgUrl+item.image} alt={`zdjęcie ${item.name}`} />
+									<img src={import.meta.env.VITE_BACKEND_URL+imgUrl+item.image} alt={`zdjęcie ${item.name}`} />
 									<p>{item.name}</p>
 									<p>{item.price}{currency}</p>
-									<p>{cartItems[item._id]}</p>
-									<p>{item.price * cartItems[item._id]}{currency}</p>
+									<p>{userCartItems[item._id]}</p>
+									<p>{item.price * userCartItems[item._id]}{currency}</p>
 									<img className='cross' src={assets.rabish_icon} alt='usuń' onClick={() =>{
 														if (window.confirm('Czy na pewno chcesz usunąć ten przedmiot?')) {
 														 	removeFromCart(item._id)}}}
@@ -113,12 +112,12 @@ function Cart() {
 					<div className='cartTotalDetails'>
 						<p>{rabat?cartData.beforeRabat:cartData.subtotal}</p>
 						<span style={rabat?{color: 'red', textDecoration: 'line-through'}:{}}>
-						<p style={{color: 'black'}}>{getTotalCartAmount()}{currency}</p>
+						<p style={{color: 'black'}}>{getTotalCartAmount(userCartItems)}{currency}</p>
 						</span>
 					</div>
 					<div className={`cartTotalDetails ${rabat?'':'displayNone'}`}>
 						<b>{rabat?cartData.rabat+' ( '+rabat*100+'% ) ':cartData.total}</b>
-						<b>{(getTotalCartAmount()-getTotalCartAmount()*rabat).toFixed(2)}{currency}</b>
+						<b>{(getTotalCartAmount(userCartItems)-getTotalCartAmount(userCartItems)*rabat).toFixed(2)}{currency}</b>
 					</div>
 					<div>
 						<hr />
@@ -129,14 +128,14 @@ function Cart() {
 						<hr />
 						<div className='cartTotalDetails'>
 						<b>{cartData.total}</b>
-						<b style={{color: 'green'}}>{(getTotalCartAmount()-getTotalCartAmount()*rabat+ deliveryPrice).toFixed(2) }{currency}</b>
+						<b style={{color: 'green'}}>{(getTotalCartAmount(userCartItems)-getTotalCartAmount(userCartItems)*rabat+ deliveryPrice).toFixed(2) }{currency}</b>
 					</div>
 
 					</div>
 				
 					<Button color={0} onClick={()=>{
 				
-						if(getTotalCartAmount()==0){
+						if(getTotalCartAmount(userCartItems)==0){
 							toast.error(customInfo.emptyCart)
 						}else{
 							navigate(`/${pagesLinks.order}`)

@@ -26,7 +26,7 @@ import NotAdminPage from './pages/NotAdminPage.jsx';
 
 //public
 import Home from '@/pages/PublicPages/Home/Home';
-//import Cart from '@/pages/PublicPages/Cart/Cart';
+import Cart from '@/pages/PublicPages/Cart/Cart';
 ///import PlaceOrder from '@/pages/PublicPages/PlaceOrder/PlaceOrder';
 import Footer from '@/components/Footer/Footer';
 /* import LoginPopup from './components/LoginPopup/LoginPopup'; */
@@ -88,7 +88,30 @@ const RedirectAuthenticatedUser = ({ children }) => {
 };
 
 function App() {
-	const { isCheckingAuth, checkAuth, token } = useAuthStore();
+	const { isCheckingAuth, checkAuth, token, setUserCartItems, setCartItems } = useAuthStore();
+
+/* 	const [cartItems, setCartItems] = useState(() => {
+		let obj = {};
+		if(localStorage.getItem('cartData')!=='undefined'){
+			obj = localStorage.getItem('cartData') ? JSON.parse(localStorage.getItem('cartData')) : {};
+		}
+		return obj;
+	  });
+
+	  let obj = {}; */
+	  let obj = {};
+	  if(localStorage.getItem('cartData')!=='undefined'){
+		  obj = localStorage.getItem('cartData') ? JSON.parse(localStorage.getItem('cartData')) : {};
+	  }
+
+	  const { cartItems } = useAuthStore((state) => ({
+		cartItems: state.cartItems,
+	  }));
+
+	 // 
+	  
+
+
 	
 
 	useEffect(() => {
@@ -101,6 +124,7 @@ function App() {
 			
 		}
 		console.log('sprawdzam')
+		setCartItems(obj);
 	}, [checkAuth]);
 
 	if (isCheckingAuth) return <LoadSpinner />;
@@ -115,7 +139,7 @@ function App() {
 
 
 			<Route path='/' element={<Home />} />
-   {/*        <Route path={`/${pagesLinks.cart}`} element={<Cart />} /> */}
+          <Route path={`/${pagesLinks.cart}`} element={<Cart />} />
        {/*    <Route path={`/${pagesLinks.order}`} element={<PlaceOrder />} /> */}
    {/*        <Route path={`/${pagesLinks.verify}`} element={<Verify />} /> */}
        {/*    <Route path={`/${pagesLinks.myorders}`} element={<MyOrders />} /> */}

@@ -132,7 +132,7 @@ const StoreContextProvider = (props) => {
 		loadData()
 	},[user])
 
-	const deliveryPrice = getTotalCartAmount()===0?0:8;
+	//const deliveryPrice = getTotalCartAmount()===0?0:8;
 
 	const contextValue = {
 		items_list,

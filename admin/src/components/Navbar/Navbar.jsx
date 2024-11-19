@@ -9,7 +9,10 @@ import { replacePolishLetters } from '@/utils/functions.js';
 import BurgerMenu from '../BurgerMenu/BurgerMenu.jsx';
 
 const Navbar = () => {
-	const { user, logout, isAuthenticated } = useAuthStore();
+	const { user, logout, isAuthenticated, userCartItems } = useAuthStore();
+
+	const sum = Object.values(userCartItems).reduce((accumulator, value) => accumulator + value, 0);
+console.log(sum);
 
 	const [menu, setMenu] = useState('start');
 	const [openMenu, setOpenMenu] = useState(false);
@@ -79,7 +82,7 @@ const Navbar = () => {
 							}
 							onClick={() => handleSetMenu(item)}
 						>
-							{renderMenuList[item].replace('/', '').replace('panel/', '')}
+							{renderMenuList[item].replace('/', '').replace('panel/', '')}{renderMenuList[item]=='/koszyk'&&<p>{sum}</p>}
 						</a>
 					))}
 									{Object.entries(objMenu).map(([item, i]) => (
