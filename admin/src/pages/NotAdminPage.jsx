@@ -36,7 +36,7 @@ const NotAdminPage = () => {
 		}
 	
 	  }else{
-		toast.error('errorMessage')
+		//toast.error('errorMessage')
 	  }
 	}
 	

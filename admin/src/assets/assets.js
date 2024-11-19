@@ -41,7 +41,7 @@ import main_6 from './categories/6/main.png'
 //for example 3 items to main
 
 
-import main_1_item_1 from './categories/1/items/1.png'
+/* import main_1_item_1 from './categories/1/items/1.png'
 import main_1_item_2 from './categories/1/items/2.png'
 import main_1_item_3 from './categories/1/items/3.png'
 import main_1_item_4 from './categories/1/items/4.png'
@@ -64,7 +64,7 @@ import main_5_item_3 from './categories/5/items/3.png'
 
 import main_6_item_1 from './categories/6/items/1.png'
 import main_6_item_2 from './categories/6/items/2.png'
-import main_6_item_3 from './categories/6/items/3.png'
+import main_6_item_3 from './categories/6/items/3.png' */
 
 
 const countMainId = (main_1_item_1) =>{
@@ -163,11 +163,11 @@ export const assets = {
     add_icon,
     logo,
     order_icon,
-    parcel_icon,
+   // parcel_icon,
     upload_area,
     login_icon,
     parcel_icon,    
-    bag_icon, 
+    //bag_icon, 
     logout_icon,  
     profile_icon,    
     cross_icon, 
@@ -180,16 +180,16 @@ export const assets = {
     remove_icon_red,   
     add_icon_white,
     rating_stars,  
-    logo,
-    basket_icon,
-    search_icon, 
+    //logo,
+   // basket_icon,
+   // search_icon, 
     main_1,    
     main_2,    
     main_3,    
     main_4,    
     main_5,    
     main_6,
-    main_1_item_1,
+/*     main_1_item_1,
     main_1_item_2,
     main_1_item_3,
     main_2_item_1,
@@ -206,7 +206,7 @@ export const assets = {
     main_5_item_3,
     main_6_item_1,
     main_6_item_2,
-    main_6_item_3,
+    main_6_item_3, */
     
    /*  header,    
    
@@ -255,7 +255,7 @@ export const main_list = [
     }
 ]
 
-export const items_list = [
+/* export const items_list = [
     {
         _id: countMainId(main_1_item_1)[0]+countMainId(main_1_item_1)[1],
         name: 'margherita',
@@ -412,3 +412,4 @@ export const items_list = [
 
 ]
 
+ */

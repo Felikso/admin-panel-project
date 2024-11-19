@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { useAuthStore } from './store/authStore';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 //public
 import Navbar from './components/Navbar/Navbar';
@@ -23,14 +23,13 @@ import LoadSpinner from './components/LoadSpinner/LoadSpinner.jsx';
 import { Toaster } from 'react-hot-toast';
 
 
-import ListPage from './pages/AuthPages/ListPage';
+/* import ListPage from './pages/AuthPages/ListPage';
 import AddPage from './pages/AuthPages/AddPage.jsx';
-import OrdersPage from './pages/AuthPages/OrdersPage.jsx';
-//import BackgroundAnimation from './components/BackgroundAnimation/BackgroundAnimation.jsx';
-import AdminNavbar from './components/AdminNavbar/AdminNavbar.jsx'
+import OrdersPage from './pages/AuthPages/OrdersPage.jsx'; */
 
-import { pagesLinks, authList } from './utils/variables.jsx';
-import { replacePolishLetters } from './utils/functions.js'
+
+import { pagesLinks} from './utils/variables.jsx';
+//import { replacePolishLetters } from './utils/functions.js'
 //import NotAdminPage from './pages/NotAdminPage.jsx';
 
 
