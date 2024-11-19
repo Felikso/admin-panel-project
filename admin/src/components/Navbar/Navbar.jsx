@@ -7,12 +7,24 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuthStore } from '@/store/authStore';
 import { replacePolishLetters } from '@/utils/functions.js';
 import BurgerMenu from '../BurgerMenu/BurgerMenu.jsx';
+import { useCartStore } from '../../store/cartStore';
 
 const Navbar = () => {
 	const { user, logout, isAuthenticated, userCartItems } = useAuthStore();
 
-	const sum = Object.values(userCartItems).reduce((accumulator, value) => accumulator + value, 0);
-console.log(sum);
+	const { cartItems } = useCartStore();
+const cartCount = cartItems.length;
+
+const sum  = cartItems.reduce((accumulator, currentObject) => {
+	return accumulator + currentObject.quantity;
+  }, 0);
+  
+
+
+
+  //console.log(sumPrice);
+  
+
 
 	const [menu, setMenu] = useState('start');
 	const [openMenu, setOpenMenu] = useState(false);

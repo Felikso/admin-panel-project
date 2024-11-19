@@ -83,6 +83,31 @@ persist(
 		  }
 		}
 	  },
+	  cartValues: 0,
+	  totalPrice: () =>
+		get().cartItems.reduce((total, item) => total + item.price * item.quantity, 0),
+	  getTotalCartAmount: (cartItems) => {
+		let sumPrice = 0;
+		cartItems.map(item=>{
+			return sumPrice += item.price*item.quantity
+		  })
+		  set({ cartValues: sumPrice });
+	/* 	const sum  = cartItems.reduce((accumulator, currentObject) => {
+			return accumulator + currentObject.quantity;
+		  }, 0); */
+
+/* 		let totalAmount = 0;
+		for (const item in cartItems) {
+			if (cartItems[item] > 0) {
+				let itemInfo = items_list.find((product) => product._id === item);
+				if(itemInfo){
+					totalAmount += itemInfo.price * cartItems[item];
+				}
+
+			}
+		}
+		return totalAmount; */
+	},
 
 
 

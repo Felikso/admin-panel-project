@@ -225,19 +225,7 @@ export const useAuthStore = create((set) => ({
 		}
 		
 	},
-	getTotalCartAmount: (userCartItems) => {
-		let totalAmount = 0;
-		for (const item in userCartItems) {
-			if (userCartItems[item] > 0) {
-				let itemInfo = items_list.find((product) => product._id === item);
-				if(itemInfo){
-					totalAmount += itemInfo.price * userCartItems[item];
-				}
 
-			}
-		}
-		return totalAmount;
-	},
 	items_list: [],
 	fetchItemsList: async () => {
 		try {
