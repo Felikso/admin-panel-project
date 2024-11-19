@@ -36,6 +36,29 @@ const authOrderMiddleware = async (req,res,next) => {
     //const {token} = req.headers;
     const token = req.cookies.token;
 
+    try{
+        if(token){
+        const token_decode = jwt.verify(token,process.env.JWT_SECRET);
+
+        req.body.userId = token_decode.userId;  //token_decode.id
+        } else{
+            req.body.userId = ''  
+        }
+        
+        next();
+    } catch (error){
+        console.log(error);
+        res.json({success:false,message:errorMessage})
+
+    }
+}
+
+const test = async (req,res,next) => {
+
+    
+    //const {token} = req.headers;
+    const token = req.cookies.token;
+
  /*    if(!token){
         console.log('bad login')
         return res.json({success:false,message:badLoginAgain})

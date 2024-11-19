@@ -10,6 +10,7 @@ import {
 import { StoreContext } from '@/context/StoreContext';
 import axios from 'axios';
 import { useAuthStore } from '@/store/authStore';
+import { useCartStore } from '@/store/cartStore'
 import toast from 'react-hot-toast';
 
 import Button from '@/components/Button/Button';
@@ -18,17 +19,15 @@ import { pagesLinks } from '@/store/authVar';
 import NetworkErrorText from '@/components/NetworkErrorText/NetworkErrorText'
 
 const PlaceOrder = () => {
-	const {
-		getTotalCartAmount,
-		deliveryPrice,
-		token,
-		items_list,
-		cartItems,
-		url,
-		netErr,
-	} = useContext(StoreContext);
 
-	const { user, isAuthenticated } = useAuthStore();
+	const token = '7437735'
+	const { user, isAuthenticated, netErr, beUrl } = useAuthStore();
+
+	const { cartItems, decreaseQuantity } = useCartStore();
+
+	const sumPrice = useCartStore((state) => state.totalPrice());
+
+	const deliveryPrice = sumPrice === 0 ? 0 : 8;
 
 	const [data, setData] = useState(
 		user?.address
@@ -80,22 +79,22 @@ const PlaceOrder = () => {
 		}
 
 
-		let orderItems = [];
+/* 		let orderItems = [];
 		items_list.map((item) => {
 			if (cartItems[item._id] > 0) {
 				let itemInfo = item;
 				itemInfo[quantityItems] = cartItems[item._id];
 				orderItems.push(itemInfo);
 			}
-		});
+		}); */
 		let orderData = {
 			address: data,
-			items: orderItems,
-			amount: (getTotalCartAmount() - rabatAmount + deliveryPrice).toFixed(2),
+			items: cartItems,
+			amount: (sumPrice - rabatAmount + deliveryPrice).toFixed(2),
 			rabat: rabatValue,
 			saveAddress: saveAddress,
 		};
-		let response = await axios.post(url + orderPlaceUrl, orderData, {
+		let response = await axios.post(beUrl + orderPlaceUrl, orderData, {
 			headers: { token },
 		});
 		console.log(response);
@@ -138,7 +137,7 @@ const PlaceOrder = () => {
 
 	const rabatValue = user?.rabat ? user.rabat.rabatValue : 0;
 
-	const rabatAmount = user?.rabat ? getTotalCartAmount()*rabatValue : 0;
+	const rabatAmount = user?.rabat ? sumPrice*rabatValue : 0;
 	return (
 		<form onSubmit={placeOrder} className='placeOrder'>
 			<div className='placeOrderLeft'>
@@ -233,7 +232,7 @@ const PlaceOrder = () => {
 					<div>
 						<div className='cartTotalDetails'>
 							<p>{cartData.subtotal}</p>
-							<p>{(getTotalCartAmount() - rabatAmount).toFixed(2)}</p>
+							<p>{(sumPrice - rabatAmount).toFixed(2)}</p>
 						</div>
 						<hr />
 						<div className='cartTotalDetails'>
@@ -243,7 +242,7 @@ const PlaceOrder = () => {
 						<hr />
 						<div className='cartTotalDetails'>
 							<b>{cartData.total}</b>
-							<b>{(getTotalCartAmount() - rabatAmount + deliveryPrice).toFixed(2)}</b>
+							<b>{(sumPrice - rabatAmount + deliveryPrice).toFixed(2)}</b>
 						</div>
 					</div>
 					<Button type={'submit'} color={0} text={placeOrderData.checkout} />

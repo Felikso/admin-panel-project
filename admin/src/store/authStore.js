@@ -21,6 +21,7 @@ export const useAuthStore = create((set) => ({
 	message: null,
 	checkAdmin: true,
 	netErr: false,
+	beUrl: import.meta.env.VITE_BACKEND_URL,
 
 	signup: async (email, password, name) => {
 		set({ isLoading: true, error: null });

@@ -18,7 +18,7 @@ const userRoute = express.Router();
 userRoute.get("/check-auth", verifyToken, checkAuth);
 
 userRoute.post("/signup", signup);
-userRoute.post("/login", login);
+userRoute.post("/login",verifyToken, login);
 userRoute.post("/logout", logout);
 
 userRoute.post("/verify-email", verifyEmail);

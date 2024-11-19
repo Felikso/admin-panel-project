@@ -16,17 +16,17 @@ import CodeVerifikator from '@/components/CodeVeryfikator/CodeVerifikator.jsx';
 import { useAuthStore } from '@/store/authStore.js';
 
 const MyOrders = () => {
-	const { url, token, netErr } = useContext(StoreContext);
-	const { error, isLoading } = useAuthStore();
+
+	const { isAuthenticated, error, isLoading, beUrl, netErr } = useAuthStore();
 
 	const [data, setData] = useState([]);
 	const [codeId, setCodeId] = useState(['', '', '', '', '', '']);
 
 	const fetchOrders = async () => {
 		const response = await axios.post(
-			url + userOrdersUrl,
+			beUrl + userOrdersUrl,
 			{ codeId: codeId.join("") },
-			{ headers: { token } }
+		/* 	{ headers: { token } } */
 		);
 
 		setData(response.data.data);
@@ -58,9 +58,9 @@ const MyOrders = () => {
 
 	useEffect(() => {
 		
-		if (token) {
+		//if (isAuthenticated) {
 			fetchOrders();
-		}
+		//}
 		if (codeId.every((digit) => digit !== "")) {
 			handleSubmit(new Event("submit"));
 		}

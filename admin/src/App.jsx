@@ -27,14 +27,14 @@ import NotAdminPage from './pages/NotAdminPage.jsx';
 //public
 import Home from '@/pages/PublicPages/Home/Home';
 import Cart from '@/pages/PublicPages/Cart/Cart';
-///import PlaceOrder from '@/pages/PublicPages/PlaceOrder/PlaceOrder';
+import PlaceOrder from '@/pages/PublicPages/PlaceOrder/PlaceOrder';
 import Footer from '@/components/Footer/Footer';
 /* import LoginPopup from './components/LoginPopup/LoginPopup'; */
 /* import { pagesLinks, footerLinks } from './utils/variables'; */
 import PopupPage from '@/components/PopupPage/PopupPage';
 import Navbar from './components/Navbar/Navbar';
 /* import Verify from './pages/Verify/Verify'; */
-//import MyOrders from '@/pages/PublicPages/MyOrders/MyOrders';
+import MyOrders from '@/pages/PublicPages/MyOrders/MyOrders';
 /* import VerifyOrder from './pages/VerifyOrder/VerifyOrder.jsx';
  */
 import toast from 'react-hot-toast';
@@ -90,6 +90,13 @@ const RedirectAuthenticatedUser = ({ children }) => {
 function App() {
 	const { isCheckingAuth, checkAuth, token, setUserCartItems, setCartItems } = useAuthStore();
 
+	fetch('http://localhost:4000/api/items/list', {
+		credentials: 'include'
+	  })
+		.then(response => response.json())
+		.then(data => console.log(data))
+		.catch(error => console.error('Error:', error));
+
 /* 	const [cartItems, setCartItems] = useState(() => {
 		let obj = {};
 		if(localStorage.getItem('cartData')!=='undefined'){
@@ -124,7 +131,7 @@ function App() {
 			
 		}
 		console.log('sprawdzam')
-		setCartItems(obj);
+		//setCartItems(obj);
 	}, [checkAuth]);
 
 	if (isCheckingAuth) return <LoadSpinner />;
@@ -140,9 +147,9 @@ function App() {
 
 			<Route path='/' element={<Home />} />
           <Route path={`/${pagesLinks.cart}`} element={<Cart />} />
-       {/*    <Route path={`/${pagesLinks.order}`} element={<PlaceOrder />} /> */}
+          <Route path={`/${pagesLinks.order}`} element={<PlaceOrder />} />
    {/*        <Route path={`/${pagesLinks.verify}`} element={<Verify />} /> */}
-       {/*    <Route path={`/${pagesLinks.myorders}`} element={<MyOrders />} /> */}
+          <Route path={`/${pagesLinks.myorders}`} element={<MyOrders />} />
 		{/*   <Route path={`/${pagesLinks.verifyOrder}/:_id`} element={<VerifyOrder />} /> */}
 		
 				<Route
