@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import './Cart.css';
-import { StoreContext } from '@/context/StoreContext';
+
 import {
 	cartData,
 	cartItemsData,

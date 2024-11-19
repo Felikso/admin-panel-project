@@ -7,7 +7,7 @@ import {
 	orderPlaceUrl,
 	customInfo,
 } from '@/utils/variables';
-import { StoreContext } from '@/context/StoreContext';
+
 import axios from 'axios';
 import { useAuthStore } from '@/store/authStore';
 import { useCartStore } from '@/store/cartStore'

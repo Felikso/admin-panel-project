@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Item.css';
 import { assets } from '@/assets/assets';
-import { StoreContext } from '@/context/StoreContext';
+
 import { cartData, currency, customInfo } from '@/utils/variables';
 import { useAuthStore } from '../../store/authStore';
 import { useNavigate, useParams } from 'react-router-dom';

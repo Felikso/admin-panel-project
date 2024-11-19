@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import './ItemsDisplay.css'
-import { StoreContext } from '@/context/StoreContext'
 import Item from '../Item/Item'
 
 import { allCategoriesName, customErrors, customInfo, itemsMainData } from '@/utils/variables.jsx'
@@ -32,14 +31,7 @@ const ItemsDisplay = ({category}) => {
     useEffect(()=>{
       fetchList();
     },[])
-    //console.log(list);
-  /*   if(items_list){
-      console.log(items_list);
-    }
- */
-    console.log('iteemDISPLAY');
-    
-    //const {items_list, dataLoading, netErr} = useContext(StoreContext)
+
 
     let dataLoading = true;
     let netErr = false
